@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Core\UdemyCarBook.Domain\UdemyCarBook.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\CQRS\Results\BrandResults\" />
+  </ItemGroup>
+
 </Project>

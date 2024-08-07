@@ -1,3 +1,4 @@
+using System.Reflection;
 using UdemyCarBook.Application.CarInterfaces;
 using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers.Write;
@@ -11,19 +12,22 @@ using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Write;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers.Write;
+using UdemyCarBook.Application.Features.Mediator.Handlers.FeatureHandlers.Read;
 using UdemyCarBook.Application.Interfaces;
+using UdemyCarBook.Application.Services;
 using UdemyCarBook.Persistence.CarRepositories;
 using UdemyCarBook.Persistence.Context;
 using UdemyCarBook.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 
 builder.Services.AddDbContext<CarBookContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICarRepository,CarRepository>();
-builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -66,7 +70,10 @@ builder.Services.AddScoped<CreateContactCommandHandler>();
 builder.Services.AddScoped<UpdateContactCommandHandler>();
 builder.Services.AddScoped<RemoveContactCommandHandler>();
 
+builder.Services.AddApplicationServices(builder.Configuration);
 
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 

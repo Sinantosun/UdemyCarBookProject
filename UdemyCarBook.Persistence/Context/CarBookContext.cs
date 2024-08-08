@@ -15,7 +15,7 @@ namespace UdemyCarBook.Persistence.Context
             optionsBuilder.UseSqlServer("server = DESKTOP-TOGRPIE\\SQLEXPRESS; initial catalog = UdemyCarBookDb; integrated security = true; trustServerCertificate = true;  ");
         }
         public DbSet<About> Abouts { get; set; }
-        public DbSet<Banner> MyProperty { get; set; }
+        public DbSet<Banner> Banners { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarDescription> CarDescriptions { get; set; }
         public DbSet<CarPricing> CarPricings { get; set; }
@@ -29,5 +29,7 @@ namespace UdemyCarBook.Persistence.Context
         public DbSet<Service> Services { get; set; }
         public DbSet<SocailMedia> SocailMedias { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Author> Authors  { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UdemyCarBook.Persistence.Context;
 
@@ -11,9 +12,11 @@ using UdemyCarBook.Persistence.Context;
 namespace UdemyCarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    partial class CarBookContextModelSnapshot : ModelSnapshot
+    [Migration("20240808101137_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,94 +48,6 @@ namespace UdemyCarBook.Persistence.Migrations
                     b.HasKey("AboutId");
 
                     b.ToTable("Abouts");
-                });
-
-            modelBuilder.Entity("UdemyCarBook.Domain.Entities.Author", b =>
-                {
-                    b.Property<int>("AuthorID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AuthorID"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AuthorID");
-
-                    b.ToTable("Authors");
-                });
-
-            modelBuilder.Entity("UdemyCarBook.Domain.Entities.Banner", b =>
-                {
-                    b.Property<int>("BannerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BannerId"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VideoDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VideoUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("BannerId");
-
-                    b.ToTable("Banners");
-                });
-
-            modelBuilder.Entity("UdemyCarBook.Domain.Entities.Blog", b =>
-                {
-                    b.Property<int>("BlogId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BlogId"));
-
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CoverImageURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("BlogId");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("UdemyCarBook.Domain.Entities.Brand", b =>
@@ -481,25 +396,6 @@ namespace UdemyCarBook.Persistence.Migrations
                     b.ToTable("Testimonials");
                 });
 
-            modelBuilder.Entity("UdemyCarBook.Domain.Entities.Blog", b =>
-                {
-                    b.HasOne("UdemyCarBook.Domain.Entities.Author", "Author")
-                        .WithMany("Blogs")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UdemyCarBook.Domain.Entities.Category", "Category")
-                        .WithMany("Blog")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("UdemyCarBook.Domain.Entities.Car", b =>
                 {
                     b.HasOne("UdemyCarBook.Domain.Entities.Brand", "Brand")
@@ -560,11 +456,6 @@ namespace UdemyCarBook.Persistence.Migrations
                     b.Navigation("Pricing");
                 });
 
-            modelBuilder.Entity("UdemyCarBook.Domain.Entities.Author", b =>
-                {
-                    b.Navigation("Blogs");
-                });
-
             modelBuilder.Entity("UdemyCarBook.Domain.Entities.Brand", b =>
                 {
                     b.Navigation("Cars");
@@ -577,11 +468,6 @@ namespace UdemyCarBook.Persistence.Migrations
                     b.Navigation("CarPricings");
 
                     b.Navigation("carDescriptions");
-                });
-
-            modelBuilder.Entity("UdemyCarBook.Domain.Entities.Category", b =>
-                {
-                    b.Navigation("Blog");
                 });
 
             modelBuilder.Entity("UdemyCarBook.Domain.Entities.Feature", b =>

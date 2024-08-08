@@ -8,7 +8,7 @@ using UdemyCarBook.Application.Features.Mediator.Commands.ServiceCommands;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Domain.Entities;
 
-namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Read
+namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Write
 {
     public class UpdateServiceCommandHandler : IRequestHandler<UpdateServiceCommand>
     {
@@ -23,8 +23,9 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Re
         {
             var value = await _repository.GetByIdAsync(request.ServiceId);
             value.Title = request.Title;
-            value.IconUrl = request.IconUrl;    
-            await _repository.UpdateAsync(value);  
+            value.IconUrl = request.IconUrl;
+            value.Description = request.Description;
+            await _repository.UpdateAsync(value);
 
         }
     }

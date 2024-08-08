@@ -8,7 +8,7 @@ using UdemyCarBook.Application.Features.Mediator.Commands.ServiceCommands;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Domain.Entities;
 
-namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Read
+namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Write
 {
     public class CreateServiceCommandHandler : IRequestHandler<CreateServiceCommand>
     {
@@ -25,6 +25,7 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Re
             {
                 IconUrl = request.IconUrl,
                 Title = request.Title,
+                Description=request.Description
             });
         }
     }

@@ -9,7 +9,7 @@ using UdemyCarBook.Application.Features.Mediator.Results.ServiceResults;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Domain.Entities;
 
-namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Write
+namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Read
 {
     public class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery, GetServiceByIdQueryResult>
     {

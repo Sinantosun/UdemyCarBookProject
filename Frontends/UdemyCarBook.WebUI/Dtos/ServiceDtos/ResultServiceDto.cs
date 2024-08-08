@@ -1,8 +1,6 @@
-﻿
-
-namespace UdemyCarBook.Domain.Entities
+﻿namespace UdemyCarBook.WebUI.Dtos.ServiceDtos
 {
-    public class Service
+    public class ResultServiceDto
     {
         public int ServiceId { get; set; }
         public string Title { get; set; }

@@ -1,5 +1,3 @@
-using System.Reflection;
-using UdemyCarBook.Application.CarInterfaces;
 using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers.Write;
 using UdemyCarBook.Application.Features.CQRS.Handlers.BannerHandlers.Read;
@@ -12,12 +10,16 @@ using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Write;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers.Write;
-using UdemyCarBook.Application.Features.Mediator.Handlers.FeatureHandlers.Read;
 using UdemyCarBook.Application.Interfaces;
+using UdemyCarBook.Application.Interfaces.BlogInterfaces;
+using UdemyCarBook.Application.Interfaces.CarInterfaces;
+using UdemyCarBook.Application.Interfaces.CarPricingInterfaces;
 using UdemyCarBook.Application.Services;
-using UdemyCarBook.Persistence.CarRepositories;
 using UdemyCarBook.Persistence.Context;
 using UdemyCarBook.Persistence.Repositories;
+using UdemyCarBook.Persistence.Repositories.BlogRepositories;
+using UdemyCarBook.Persistence.Repositories.CarPricingRepsitories;
+using UdemyCarBook.Persistence.Repositories.CarRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CarBookContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICarRepository,CarRepository>();
+builder.Services.AddScoped<IBlogRepository,BlogRepository>();
+builder.Services.AddScoped<ICarPricingRepository,CarPricingRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -54,6 +58,8 @@ builder.Services.AddScoped<GetCarByIdQueryHandler>();
 builder.Services.AddScoped<GetLast5CarsWithBrandQueryHandler>();
 builder.Services.AddScoped<GetCarQueryHandler>();
 builder.Services.AddScoped<CreateCarCommandHandler>();
+
+
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<GetCarWithBrandQueryHandler>();

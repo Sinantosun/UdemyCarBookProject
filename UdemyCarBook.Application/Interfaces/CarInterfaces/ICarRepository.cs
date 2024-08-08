@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UdemyCarBook.Domain.Entities;
 
-namespace UdemyCarBook.Application.CarInterfaces
+namespace UdemyCarBook.Application.Interfaces.CarInterfaces
 {
     public interface ICarRepository
     {
-      Task<List<Car>> GetCarsListWithBrandsAsync();
-      Task<List<Car>> GetLast5CarsWithBrans();
+        Task<List<Car>> GetCarsListWithBrandsAsync();
+        Task<List<Car>> GetLast5CarsWithBrans();
+
     }
 }

@@ -18,6 +18,7 @@ namespace UdemyCarBook.WebApi.Controllers
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLast5CarsWithBrandQueryHandler _getLast5CarsWithBrandQueryHandler;
+  
 
 
 
@@ -30,6 +31,7 @@ namespace UdemyCarBook.WebApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarsWithBrandQueryHandler = getLast5CarsWithBrandQueryHandler;
+   
         }
         [HttpGet("GetCarWithBrand")]
         public async Task<IActionResult> GetCarWithBrand()
@@ -37,6 +39,8 @@ namespace UdemyCarBook.WebApi.Controllers
             var values = await _getCarWithBrandQueryHandler.Handle();
             return Ok(values);
         }
+
+
 
         [HttpGet("GetLast5CarList")]
         public async Task<IActionResult> GetLast5CarList()

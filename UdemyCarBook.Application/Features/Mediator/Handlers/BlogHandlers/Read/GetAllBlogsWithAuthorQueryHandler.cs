@@ -10,20 +10,21 @@ using UdemyCarBook.Application.Interfaces.BlogInterfaces;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.BlogHandlers.Read
 {
-    public class GetLast3BlogsWithAutorsHandler : IRequestHandler<GetLast3BlogWithAuthorsQuery, List<GetLast3WithAuthorsBlogsQueryResult>>
+    public class GetAllBlogsWithAuthorQueryHandler : IRequestHandler<GetAllBlogsWithAutorQuery, List<GetAllBlogsWithAutohrQueryResult>>
     {
         private readonly IBlogRepository _blogrepository;
 
-        public GetLast3BlogsWithAutorsHandler(IBlogRepository blogrepository)
+        public GetAllBlogsWithAuthorQueryHandler(IBlogRepository blogrepository)
         {
             _blogrepository = blogrepository;
         }
 
-        public async Task<List<GetLast3WithAuthorsBlogsQueryResult>> Handle(GetLast3BlogWithAuthorsQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetAllBlogsWithAutohrQueryResult>> Handle(GetAllBlogsWithAutorQuery request, CancellationToken cancellationToken)
         {
-            var values = await _blogrepository.GetLast3BlogsWithAutorsAsync();
-            return values.Select(x => new GetLast3WithAuthorsBlogsQueryResult
+            var values = await _blogrepository.GetAllBlogsWithAuthors();
+            return values.Select(x => new GetAllBlogsWithAutohrQueryResult
             {
+                Description = x.Description,
                 BlogId = x.BlogId,
                 AuthorId = x.AuthorId,
                 AuthorName = x.Author.Name,

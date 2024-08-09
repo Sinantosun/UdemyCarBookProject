@@ -23,8 +23,14 @@ namespace UdemyCarBook.WebApi.Controllers
             var values = await _mediator.Send(new GetBlogQuery());
             return Ok(values);
         }
-
-        [HttpGet("GetLast3BlogsWithAuthorsList")]
+        [HttpGet("GetAllBlogsWithAuthorList")]
+        public async Task<IActionResult> GetAllBlogsWithAuthorList()
+        {
+            var values = await _mediator.Send(new GetAllBlogsWithAutorQuery());
+            return Ok(values);
+        }
+     
+      [HttpGet("GetLast3BlogsWithAuthorsList")]
         public async Task<IActionResult> GetLast3BlogsWithAuthorsList()
         {
             var values = await _mediator.Send(new GetLast3BlogWithAuthorsQuery());
@@ -59,5 +65,6 @@ namespace UdemyCarBook.WebApi.Controllers
             await _mediator.Send(new RemoveBlogCommand(id));
             return Ok();
         }
+      
     }
 }

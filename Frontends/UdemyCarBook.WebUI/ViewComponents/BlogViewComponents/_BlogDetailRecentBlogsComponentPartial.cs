@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Net.Http;
 using UdemyCarBook.WebUI.Dtos.BlogDtos;
-using UdemyCarBook.WebUI.Dtos.TestimonailDtos;
 
-namespace UdemyCarBook.WebUI.ViewComponents.BlogVİewComponents
+namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
 {
-    public class _GetLast3BlogsWithAutorListComponentPartial : ViewComponent
+    public class _BlogDetailRecentBlogsComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        public _GetLast3BlogsWithAutorListComponentPartial(IHttpClientFactory httpClientFactory)
+        public _BlogDetailRecentBlogsComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -17,7 +15,7 @@ namespace UdemyCarBook.WebUI.ViewComponents.BlogVİewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7082/api/Blogs/GetLast3BlogsWithAuthorsList\r\n");
+            var responseMessage = await client.GetAsync("https://localhost:7082/api/Blogs/GetLast3BlogsWithAuthorsList");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var content = await responseMessage.Content.ReadAsStringAsync();

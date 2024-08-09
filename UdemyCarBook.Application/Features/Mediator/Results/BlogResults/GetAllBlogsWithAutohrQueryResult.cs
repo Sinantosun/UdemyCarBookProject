@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UdemyCarBook.Domain.Entities;
 
-namespace UdemyCarBook.Domain.Entities
+namespace UdemyCarBook.Application.Features.Mediator.Results.BlogResults
 {
-    public class Blog
+    public class GetAllBlogsWithAutohrQueryResult
     {
         public int BlogId { get; set; }
         public string Title { get; set; }
+        public string AuthorName { get; set; }
         public int AuthorId { get; set; }
-        public Author Author { get; set; }
-        public string CoverImageURL { get; set; }
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
-        public DateTime CreatedDate { get; set; }
         public string Description { get; set; }
+
+        public string CoverImageURL { get; set; }
+        public string CategorynName { get; set; }
+        public int CategoryId { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

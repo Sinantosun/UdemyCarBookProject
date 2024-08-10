@@ -25,11 +25,17 @@ namespace UdemyCarBook.Persistence.Repositories.BlogRepositories
             return values;
         }
 
+        public async Task<Blog> GetBlogAuthorByBlogId(int id)
+        {
+            var value = await _carBookContext.Blogs.Include(x => x.Author).FirstOrDefaultAsync(x => x.BlogId == id);
+            return value;
+        }
+
         public async Task<List<Blog>> GetLast3BlogsWithAutorsAsync()
         {
             var values = await _carBookContext.Blogs.Include(x => x.Author).OrderByDescending(x => x.BlogId).Take(3).ToListAsync();
             return values;
-            
+
 
         }
     }

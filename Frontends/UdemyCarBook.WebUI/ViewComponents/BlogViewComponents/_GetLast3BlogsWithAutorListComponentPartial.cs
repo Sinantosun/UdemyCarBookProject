@@ -21,7 +21,7 @@ namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
             if (responseMessage.IsSuccessStatusCode)
             {
                 var content = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultLast3BlogsWithAuthors>>(content);
+                var values = JsonConvert.DeserializeObject<List<ResultLast3BlogsWithAuthorsDto>>(content);
                 return View(values);
             }
             return View();

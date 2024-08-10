@@ -17,5 +17,7 @@ namespace UdemyCarBook.Domain.Entities
         public Category Category { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Description { get; set; }
+
+        public List<TagCloud> tagClouds { get; set; }   
     }
 }

@@ -27,6 +27,7 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.BlogHandlers.Read
             {
                 AuthorId = value.AuthorId,
                 BlogId = value.BlogId,
+                Description=value.Description,  
                 CreatedDate=value.CreatedDate,
                 CategoryId = value.CategoryId,
                 CoverImageURL = value.CoverImageURL,

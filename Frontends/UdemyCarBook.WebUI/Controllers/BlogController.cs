@@ -29,10 +29,11 @@ namespace UdemyCarBook.WebUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> BlogDetail()
+        public async Task<IActionResult> BlogDetail(int id)
         {
             ViewBag.v1 = "Bloglar > Blog Detayı";
             ViewBag.v2 = "Blog Detayı Ve Yorumlar";
+            ViewBag.blogid = id;
             return View();
         }
     }

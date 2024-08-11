@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using UdemyCarBook.WebUI.Dtos.BlogDtos;
-using UdemyCarBook.WebUI.Dtos.TagCloudDtos;
+using UdemyCarBook.Dto.TagCloudDtos;
 
 namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
 {

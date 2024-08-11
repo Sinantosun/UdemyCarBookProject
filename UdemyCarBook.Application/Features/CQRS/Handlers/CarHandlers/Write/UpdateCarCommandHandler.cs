@@ -27,6 +27,7 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers.Write
             value.CoverImageUrl = command.CoverImageUrl;
             value.Km=command.Km;
             value.Seat = command.Seat;
+            value.Model=command.Model;
             value.Luggage = command.Luggage;    
             value.CoverImageUrl = command.CoverImageUrl;    
             await _repository.UpdateAsync(value);   

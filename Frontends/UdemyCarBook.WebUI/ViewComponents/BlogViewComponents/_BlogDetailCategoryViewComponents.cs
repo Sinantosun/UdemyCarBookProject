@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using UdemyCarBook.WebUI.Dtos.CategoryDtos;
+using UdemyCarBook.Dto.CategoryDtos;
 
 namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using UdemyCarBook.WebUI.Dtos.BannerDtos;
+using UdemyCarBook.Dto.BannerDtos;
 
 
 namespace UdemyCarBook.WebUI.ViewComponents.DefaultViewComponents

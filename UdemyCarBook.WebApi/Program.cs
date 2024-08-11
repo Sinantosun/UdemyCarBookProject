@@ -10,6 +10,7 @@ using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Write;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers.Write;
+using UdemyCarBook.Application.Features.RepositoryPattern;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Application.Interfaces.BlogInterfaces;
 using UdemyCarBook.Application.Interfaces.CarInterfaces;
@@ -21,6 +22,7 @@ using UdemyCarBook.Persistence.Repositories;
 using UdemyCarBook.Persistence.Repositories.BlogRepositories;
 using UdemyCarBook.Persistence.Repositories.CarPricingRepsitories;
 using UdemyCarBook.Persistence.Repositories.CarRepositories;
+using UdemyCarBook.Persistence.Repositories.CommentRepositories;
 using UdemyCarBook.Persistence.Repositories.TagCloudRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +36,7 @@ builder.Services.AddScoped<ICarRepository,CarRepository>();
 builder.Services.AddScoped<IBlogRepository,BlogRepository>();
 builder.Services.AddScoped<ICarPricingRepository,CarPricingRepository>();
 builder.Services.AddScoped<ITagCloudRepository, TagCloudRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

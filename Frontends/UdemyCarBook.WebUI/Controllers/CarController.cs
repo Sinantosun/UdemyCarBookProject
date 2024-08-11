@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using UdemyCarBook.WebUI.Dtos.CarDtos;
-using UdemyCarBook.WebUI.Dtos.CarPricingDtos;
+using UdemyCarBook.Dto.CarPricingDtos;
 namespace UdemyCarBook.WebUI.Controllers
 {
     public class CarController : Controller

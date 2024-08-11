@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
-using UdemyCarBook.WebUI.Dtos.ContactDtos;
+using UdemyCarBook.Dto.ContactDtos;
 
 namespace UdemyCarBook.WebUI.Controllers
 {

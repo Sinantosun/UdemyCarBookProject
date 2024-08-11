@@ -1,0 +1,72 @@
+﻿@model List<ResultBrandDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Araba Markaları Listesi</h4>
+                <p class="card-subtitle mb-4">
+                   Markalar ile ilgili ekleme, silme, güncelleme ve listeleme gibi işlemleri bu sayfa üzerinden gerçeleştirebilirsiniz
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Özellik</th>
+                                <th colspan="3" class="text-center">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.Name</td>
+                                    <td style="width:100px"><button onclick="DeleteBrand(@item.BrandId)" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</button></td>
+                                    <td style="width:150px"><a href="/Admin/Brand/UpdateBrand/@item.BrandId" class="btn btn-outline-success"> <i class="fa fa-edit"></i>  Güncelle</a></td>
+                                    <td style="width:250px"><a href="/Admin/Brand/UpdateBrand/@item.BrandId" class="btn btn-outline-secondary"> <i class="fa fa-car"></i>  Markaya Ait Araçlar</a></td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Brand/CreateBrand" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Ekle</a>
+                </div>
+            </div>
+            <!-- end Brandd-body-->
+        </div>
+        <!-- end Brandd -->
+
+    </div>
+
+</div>
+
+<script>
+    function DeleteBrand(id) {
+        Swal.fire({
+            title: "Kayıt Silme Onayı",
+            html: "Marka Kaydını Silmek İstediğinizden Emninmisiniz?<br><br><small><b>Bu işlem geri alınamaz</b></small>",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sil",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Brand/RemoveBrand/" + id;
+            }
+        });
+
+    }
+</script>
+
+

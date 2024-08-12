@@ -1,0 +1,45 @@
+﻿@model CreateBannerDto
+
+@{
+    ViewData["Title"] = "CreateBanner";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yeni Banner Girişi</h4>
+                <p class="card-subtitle mb-4">Banner ile ilgili temel bilgileri eksiksiz doldurmanız önemlidir. Veri girişlerinden sonra kaydet butonuna tıklayarak işlemi tamamlayabilirsiniz. Eğer mevcutta banner kaydı varsa, tema bütünlüğünü korumak amacıyla kaydın güncelleme işlemini yapınız bu alanda 1 adet veri kaydı bulunmalıdır.</p>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="exampleInputModel">Başlık</label>
+                        <input type="text" class="form-control" id="exampleInputModel" asp-for="Title" placeholder="Başlığı yazınız">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputModel">Açıklama</label>
+                        <input type="text" class="form-control" id="exampleInputModel" asp-for="Description" placeholder="Açıklama Yazınız">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputModel">Video Açıklaması</label>
+                        <input type="text" class="form-control" id="exampleInputModel" asp-for="VideoDescription" placeholder="Video Açıklamasını yazınız">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputModel">Video URL</label>
+                        <input type="text" class="form-control" id="exampleInputModel" asp-for="VideoUrl" placeholder="Video URL'ni buraya ekleyiniz">
+                    </div>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Bannerı kaydet</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+

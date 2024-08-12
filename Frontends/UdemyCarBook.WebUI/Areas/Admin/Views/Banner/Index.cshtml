@@ -1,0 +1,79 @@
+﻿@model List<ResultBannerDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ana Sayfa Banner Alanı</h4>
+                <p class="card-subtitle mb-4">
+                    Ana sayfanın banner alanında bulunan bilgileri aşağıdan düzenliyebilirsiniz.Tema bütünlüğü için bu alanda lütfen bir adet veri kaydı bulundurunuz. Aksi durumlarda tema bütünlüğü bozulacaktır.
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Başlık</th>
+                                <th>Açıklama</th>
+                                <th>Video Açıklaması</th>
+                                <th>Video URL</th>
+                                <th colspan="3" class="text-center">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.VideoDescription</td>
+                                    <td>@item.VideoUrl</td>
+                                    <td style="width:100px"><button onclick="DeleteBanner(@item.BannerId)" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</button></td>
+                                    <td style="width:150px"><a href="/Admin/Banner/UpdateBanner/@item.BannerId" class="btn btn-outline-success"> <i class="fa fa-edit"></i>  Güncelle</a></td>
+                                    <td style="width:180px"><a href="/Admin/Banner/UpdateBanner/@item.BannerId" class="btn btn-outline-secondary"> <i class="fa fa-play"></i>  Youtube'da Aç</a></td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Banner/CreateBanner" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Ekle</a>
+                </div>
+            </div>
+            <!-- end Bannerd-body-->
+        </div>
+        <!-- end Bannerd -->
+
+    </div>
+
+</div>
+
+<script>
+    function DeleteBanner(id) {
+        Swal.fire({
+            title: "Kayıt Silme Onayı",
+            html: "Banner Kaydını Silmek İstediğinizden Emninmisiniz?<br><br><small><b>Bu işlem geri alınamaz</b></small>",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sil",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Banner/RemoveBanner/" + id;
+            }
+        });
+
+    }
+</script>
+
+
+
+

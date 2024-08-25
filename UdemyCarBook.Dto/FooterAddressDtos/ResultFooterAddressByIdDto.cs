@@ -1,6 +1,12 @@
-﻿namespace UdemyCarBook.Dto.FooterAddressDtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UdemyCarBook.Dto.FooterAddressDtos
 {
-    public class ResultFooterAddressDtos
+    public class ResultFooterAddressByIdDto
     {
         public int FooterAddressId { get; set; }
         public string Description { get; set; }

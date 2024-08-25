@@ -1,0 +1,69 @@
+﻿@model List<ResultLocationDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lokasyon Bilgileri Alanı</h4>
+                <p class="card-subtitle mb-4">
+                    Ana sayfa ve araç kiralama sayfasında yer alan araçların alınış ve bırakılış noktalarını temsil eden yer lokasyon kısmıdır. Aşağıda araç kiralama noktalarına ait lokasyon bilgilerinin isimleri yer almaktadır. Sağ tarafta yer alan buton üzerinden bu lokasyonun harita bilgisine erişim sağlayabilirsiniz.
+                </p>
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Lokasyon</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                                <th>Konumu Aç</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.Name</td>
+                                    <td><button onclick="DeleteLocation(@item.LocationId)" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</button></td>
+                                    <td><a href="/Admin/Location/UpdateLocation/@item.LocationId" class="btn btn-outline-success"><i class="fa fa-edit"></i> Güncelle</a></td>
+                                    <td><a href="/Admin/Location/LocationDEtail/@item.LocationId" class="btn btn-outline-dark"><i class="fa fa-location"></i> Konumu Aç</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <a href="/Admin/Location/CreateLocation" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Yeni Lokasyon Girişi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function DeleteLocation(id) {
+        Swal.fire({
+            title: "Kayıt Silme Onayı",
+            html: "Lokasyon Kaydını Silmek İstediğinizden Emninmisiniz?<br><br><small><b>Bu işlem geri alınamaz</b></small>",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sil",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Location/RemoveLocation/" + id;
+            }
+        });
+
+    }
+</script>
+

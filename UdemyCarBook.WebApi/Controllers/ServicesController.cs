@@ -44,7 +44,7 @@ namespace UdemyCarBook.WebApi.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteService(int id)
         {
             await _mediator.Send(new RemoveServiceCommand(id));

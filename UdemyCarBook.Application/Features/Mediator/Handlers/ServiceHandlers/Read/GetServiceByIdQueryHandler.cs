@@ -27,6 +27,7 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Re
             {
                 IconUrl = value.IconUrl,
                 ServiceId = value.ServiceId,
+                Description=value.Description,
                 Title = value.Title,
             };
         }

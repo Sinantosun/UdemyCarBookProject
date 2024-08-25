@@ -26,6 +26,7 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers.Re
             return values.Select(x => new GetServiceQueryResult
             {
                 IconUrl = x.IconUrl,
+                Description = x.Description,
                 ServiceId = x.ServiceId,
                 Title = x.Title,
             }).ToList();

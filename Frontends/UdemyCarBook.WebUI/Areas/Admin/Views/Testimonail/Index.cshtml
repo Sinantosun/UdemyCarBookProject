@@ -1,0 +1,67 @@
+﻿@model List<ResultTestimonailDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ana Sayfa Referanslar Listesi</h4>
+                <p class="card-subtitle mb-4">
+                    Müşterilerimizin bizim hakkımızda söylemiş oldukları ifadeleri yorum olarak ekleyip, düzenleyebildiğimiz sayfamız aşağıda yer almaktadır.
+                </p>
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ad Soyad</th>
+                                <th>Başlık</th>
+                                <th>Yorum</th>
+                                <th>Güncelle</th>
+                                <th>Aç</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><img src="@item.ImageUrl" width="50" height="50" /></td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Comment</td>
+                                    <td><button onclick="DeleteTestimonial(@item.TestimonialId)" class="btn btn-outline-danger"> <i class="fa fa-trash"></i> Sil</button></td>
+                                    <td><a href="/Admin/Testimonail/UpdateTestimonail/@item.TestimonialId" class="btn btn-outline-success"><i class="fa fa-edit"></i> Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Testimonail/CreateTestimonail" class="btn btn-outline-primary"> <i class="fa fa-pen"></i> Yeni Referans Girişi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function DeleteTestimonial(id) {
+        Swal.fire({
+            title: "Kayıt Silme Onayı",
+            html: "Referans Kaydını Silmek İstediğinizden Emninmisiniz?<br><br><small><b>Bu işlem geri alınamaz</b></small>",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sil",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Testimonail/RemoveTestimonail/" + id;
+            }
+        });
+
+    }
+</script>

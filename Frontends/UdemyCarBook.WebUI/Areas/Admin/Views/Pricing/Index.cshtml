@@ -1,0 +1,64 @@
+﻿@model List<ResultPricingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ödeme Türleri Alanı</h4>
+                <p class="card-subtitle mb-4">
+                    Araçların günlük, kiralık, aylık veya benzeri kiralama opsiyonlarının yer aldığı sayfadır. Bu sayfa üzerinden yeni bir zaman periyodu eklenebilir, silinebilir veya güncellenebilir.
+                </p>
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Periyot Adı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.Name</td>
+                                    <td><button onclick="DeletePricing(@item.PricingId)" class="btn btn-outline-danger"> <i class="fa fa-trash"></i> Sil</button></td>
+                                    <td><a href="/Admin/Pricing/UpdatePricing/@item.PricingId" class="btn btn-outline-success"><i class="fa fa-edit"></i> Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Pricing/CreatePricing" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Yeni Ödeme Türü Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function DeletePricing(id) {
+        Swal.fire({
+            title: "Kayıt Silme Onayı",
+            html: "Bu Kaydını Silmek İstediğinizden Emninmisiniz?<br><br><small><b>İşlem geri alınamaz</b></small>",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sil",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Pricing/RemovePricing/" + id;
+            }
+        });
+
+    }
+</script>
+
+

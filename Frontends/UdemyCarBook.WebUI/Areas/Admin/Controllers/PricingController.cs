@@ -20,7 +20,7 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
         {
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7082/api/Pricings");
+            var responseMessage = await client.GetAsync("https://localhost:7082/api/Pricing");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var content = await responseMessage.Content.ReadAsStringAsync();
@@ -40,7 +40,7 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var data = JsonConvert.SerializeObject(createPricingDto);
             StringContent str = new StringContent(data, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7082/api/Pricings", str);
+            var responseMessage = await client.PostAsync("https://localhost:7082/api/Pricing", str);
             if (responseMessage.IsSuccessStatusCode)
             {
                 TempData["NotificationResult"] = "Kayıt Eklendi";
@@ -53,7 +53,7 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> UpdatePricing(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7082/api/Pricings/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:7082/api/Pricing/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var content = await responseMessage.Content.ReadAsStringAsync();
@@ -68,7 +68,7 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var data = JsonConvert.SerializeObject(updatePricingDto);
             StringContent str = new StringContent(data, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7082/api/Pricings", str);
+            var responseMessage = await client.PutAsync("https://localhost:7082/api/Pricing", str);
             if (responseMessage.IsSuccessStatusCode)
             {
                 TempData["NotificationResult"] = "Kayıt Güncellendi";
@@ -81,7 +81,7 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> RemovePricing(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7082/api/Pricings/{id}");
+            var responseMessage = await client.DeleteAsync($"https://localhost:7082/api/Pricing/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 TempData["NotificationResult"] = "Kayıt Silindi";

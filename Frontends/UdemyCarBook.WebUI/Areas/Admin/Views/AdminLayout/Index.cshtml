@@ -14,7 +14,11 @@
         @await Html.PartialAsync("~/Areas/Admin/Views/AdminLayout/AdminSideBarPartail.cshtml")
         <div class="main-content">
             <div class="page-content">
-                @RenderBody()
+                <div class="container-fluid">
+               
+                    @RenderBody()
+                </div>
+          
             </div>
         </div>
         @await Html.PartialAsync("~/Areas/Admin/Views/AdminLayout/AdminFooterPartial.cshtml")

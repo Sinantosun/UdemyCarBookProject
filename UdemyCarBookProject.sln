@@ -21,7 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.WebUI", "Frontends\UdemyCarBook.WebUI\UdemyCarBook.WebUI.csproj", "{75B5A2C6-7333-479B-9F2F-95C26CF832E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.Dto", "UdemyCarBook.Dto\UdemyCarBook.Dto.csproj", "{A6CCF43C-5854-48AB-92D4-7055633DFC24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.Dto", "UdemyCarBook.Dto\UdemyCarBook.Dto.csproj", "{A6CCF43C-5854-48AB-92D4-7055633DFC24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BurasıOrjinalProje", "BurasıOrjinalProje", "{9EA14FCB-8E0D-48B6-93A0-E186A8305515}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

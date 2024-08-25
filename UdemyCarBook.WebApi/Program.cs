@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers.Write;
 using UdemyCarBook.Application.Features.CQRS.Handlers.BannerHandlers.Read;
@@ -87,7 +88,10 @@ builder.Services.AddScoped<RemoveContactCommandHandler>();
 builder.Services.AddApplicationServices(builder.Configuration);
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(opts =>
+{
+    opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 var app = builder.Build();
 

@@ -51,12 +51,29 @@ namespace UdemyCarBook.WebApi.Controllers
             _commentRepository.Update(value);
             return Ok();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult RemoveComment(int id)
         {
             var value = _commentRepository.GetById(id);
             _commentRepository.Remove(value);
             return Ok();
         }
+
+        [HttpGet("CommentListByBlog/{BlogTitle}")]
+        public IActionResult CommentListByBlog(string BlogTitle)
+        {
+            var values = _commentRepository.GetCommentsByBlogId(BlogTitle);
+            var values2 = values.Select(x => new ResultCommentDto
+            {
+                BlogId = x.BlogId,
+                CommentContent = x.CommentContent,
+                CommentID = x.CommentID,
+                CreatedDate = x.CreatedDate,
+                Name = x.Name
+
+            }).ToList();
+            return Ok(values2);
+        }
+
     }
 }

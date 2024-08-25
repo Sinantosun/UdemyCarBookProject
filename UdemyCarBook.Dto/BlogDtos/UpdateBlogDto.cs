@@ -1,6 +1,12 @@
-﻿namespace UdemyCarBook.Dto.BlogDtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UdemyCarBook.Dto.BlogDtos
 {
-    public class ResultAllBlogsWithAuthorDto
+    public class UpdateBlogDto
     {
         public int blogId { get; set; }
         public string title { get; set; }

@@ -16,5 +16,13 @@ namespace UdemyCarBook.Dto.StatisticDto
         public decimal avPriceForDaily { get; set; }
         public decimal avPriceForWeekly { get; set; }
         public decimal avPriceForMonthly { get; set; }
+        public int carCountByTransmissionIsAutoCount { get; set; }
+        public int carCountByKmSmallerThen1000 { get; set; }
+        public int carCountByFuelGosalineOrDiesel { get; set; }
+        public int carCountByFuelElectiric { get; set; }
+        public string carBrandAndModelByRentPriceDailyMax { get; set; }
+        public string carBrandAndModelByRentPriceDailyMin { get; set; }
+        public string brandName { get; set; }
+        public string title { get; set; }
     }
 }

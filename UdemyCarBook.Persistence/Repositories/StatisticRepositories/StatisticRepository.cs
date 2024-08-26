@@ -51,19 +51,38 @@ namespace UdemyCarBook.Persistence.Repositories.StatisticRepositories
             return await _context.Blogs.CountAsync();
         }
 
-        public Task<string> GetBlogTitleMaxBlogCommentAsync()
+        public async Task<string> GetBlogTitleMaxBlogCommentAsync()
         {
-            throw new NotImplementedException();
+            var value = await _context.Comments.GroupBy(t => t.BlogId).Select(y => new
+            {
+                BlogId = y.Key,
+                Count = y.Count()
+            }).OrderByDescending(z => z.Count).Take(1).Select(t => t.BlogId).FirstOrDefaultAsync();
+
+            return await _context.Blogs.Where(x => x.BlogId == value).Select(z => z.Title).FirstOrDefaultAsync();
         }
 
-        public Task<string> GetBrandAndModelByRentPriceDailyMaxAsync()
+        public async Task<string> GetBrandAndModelByRentPriceDailyMaxAsync()
         {
-            throw new NotImplementedException();
+            int pricingId = _context.Pricings.Where(t => t.Name == "Günlük").Select(t => t.PricingId).FirstOrDefault();
+            var amount = _context.CarPricings.Where(t => t.PricingId == pricingId).Max(t => t.Amount);
+            int CarId = _context.CarPricings.Where(t => t.Amount == amount).Select(u => u.CarId).FirstOrDefault();
+
+            string brandModel = await _context.Cars.Where(x => x.CarId == CarId).Include(v => v.Brand).Select(z => z.Brand.Name + " " + z.Model).FirstOrDefaultAsync();
+            return brandModel;
+
+
+
         }
 
-        public Task<string> GetBrandAndModelByRentPriceDailyMinAsync()
+        public async Task<string> GetBrandAndModelByRentPriceDailyMinAsync()
         {
-            throw new NotImplementedException();
+            int pricingId = _context.Pricings.Where(t => t.Name == "Günlük").Select(t => t.PricingId).FirstOrDefault();
+            var amount = _context.CarPricings.Where(t => t.PricingId == pricingId).Min(t => t.Amount);
+            int CarId = _context.CarPricings.Where(t => t.Amount == amount).Select(u => u.CarId).FirstOrDefault();
+
+            string brandModel = await _context.Cars.Where(x => x.CarId == CarId).Include(v => v.Brand).Select(z => z.Brand.Name + " " + z.Model).FirstOrDefaultAsync();
+            return brandModel;
         }
 
         public async Task<int> GetBrandCountAsync()
@@ -73,7 +92,14 @@ namespace UdemyCarBook.Persistence.Repositories.StatisticRepositories
 
         public async Task<string> GetBrandNameByMaxCarAsync()
         {
-            throw new NotImplementedException();
+            var value = await _context.Cars.GroupBy(t => t.BrandId).Select(y => new
+            {
+                BrandId = y.Key,
+                Count = y.Count()
+            }).OrderByDescending(z => z.Count).Take(1).Select(t => t.BrandId).FirstOrDefaultAsync();
+
+            return await _context.Brands.Where(x => x.BrandId == value).Select(z => z.Name).FirstOrDefaultAsync();
+
         }
 
         public async Task<int> GetCarCountByFuelGasolineOrDiselAsync()
@@ -83,7 +109,7 @@ namespace UdemyCarBook.Persistence.Repositories.StatisticRepositories
 
         public async Task<int> GetCarCountByKmSmallarThen1000Async()
         {
-            return await _context.Cars.Where(x => x.Km <= 1000).CountAsync();
+            return await _context.Cars.Where(x => x.Km <= 10000).CountAsync();
         }
 
         public async Task<int> GetCarCountByTranmissionIsAutoAsync()

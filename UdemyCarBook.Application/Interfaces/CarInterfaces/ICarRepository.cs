@@ -11,6 +11,7 @@ namespace UdemyCarBook.Application.Interfaces.CarInterfaces
     {
         Task<List<Car>> GetCarsListWithBrandsAsync();
         Task<List<Car>> GetLast5CarsWithBrans();
+        Task<int> GetCarCountAsync();
 
     }
 }

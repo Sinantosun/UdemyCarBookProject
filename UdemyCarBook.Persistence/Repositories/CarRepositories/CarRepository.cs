@@ -14,6 +14,11 @@ namespace UdemyCarBook.Persistence.Repositories.CarRepositories
             _context = context;
         }
 
+        public async Task<int> GetCarCountAsync()
+        {
+            return await _context.Cars.CountAsync();
+        }
+
         public async Task<List<Car>> GetCarsListWithBrandsAsync()
         {
             var values = await _context.Cars.Include(x => x.Brand).ToListAsync();

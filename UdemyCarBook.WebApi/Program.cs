@@ -16,6 +16,7 @@ using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Application.Interfaces.BlogInterfaces;
 using UdemyCarBook.Application.Interfaces.CarInterfaces;
 using UdemyCarBook.Application.Interfaces.CarPricingInterfaces;
+using UdemyCarBook.Application.Interfaces.RentACarInterfaces;
 using UdemyCarBook.Application.Interfaces.StatisticInteraces;
 using UdemyCarBook.Application.Interfaces.TagCloudInterfaces;
 using UdemyCarBook.Application.Services;
@@ -25,6 +26,7 @@ using UdemyCarBook.Persistence.Repositories.BlogRepositories;
 using UdemyCarBook.Persistence.Repositories.CarPricingRepsitories;
 using UdemyCarBook.Persistence.Repositories.CarRepositories;
 using UdemyCarBook.Persistence.Repositories.CommentRepositories;
+using UdemyCarBook.Persistence.Repositories.RentACarRepositories;
 using UdemyCarBook.Persistence.Repositories.StatisticRepositories;
 using UdemyCarBook.Persistence.Repositories.TagCloudRepositories;
 
@@ -40,6 +42,7 @@ builder.Services.AddScoped<IBlogRepository,BlogRepository>();
 builder.Services.AddScoped<IStatisticRepository,StatisticRepository>();
 builder.Services.AddScoped<ICarPricingRepository,CarPricingRepository>();
 builder.Services.AddScoped<ITagCloudRepository, TagCloudRepository>();
+builder.Services.AddScoped<IRentACarRepository, RentACarRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
 
 

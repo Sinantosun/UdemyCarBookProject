@@ -23,16 +23,20 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.BlogHandlers.Read
         public async Task<GetBlogByIdQueryResult> Handle(GetBlogByIdQuery request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
-            return new GetBlogByIdQueryResult
+            if (value != null)
             {
-                AuthorId = value.AuthorId,
-                BlogId = value.BlogId,
-                Description=value.Description,  
-                CreatedDate=value.CreatedDate,
-                CategoryId = value.CategoryId,
-                CoverImageURL = value.CoverImageURL,
-                Title = value.Title,
-            };
+                return new GetBlogByIdQueryResult
+                {
+                    AuthorId = value.AuthorId,
+                    BlogId = value.BlogId,
+                    Description = value.Description,
+                    CreatedDate = value.CreatedDate,
+                    CategoryId = value.CategoryId,
+                    CoverImageURL = value.CoverImageURL,
+                    Title = value.Title,
+                };
+            }
+            return new GetBlogByIdQueryResult();
         }
     }
 }

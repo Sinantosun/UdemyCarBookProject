@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using UdemyCarBook.Dto.BlogDtos;
+using UdemyCarBook.Dto.CommentDtos;
 
 namespace UdemyCarBook.WebUI.Controllers
 {
@@ -29,10 +30,11 @@ namespace UdemyCarBook.WebUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> BlogDetail(int id)
+        public async Task<IActionResult> BlogDetail(string blogTitle, int id)
         {
             ViewBag.v1 = "Bloglar > Blog Detayı";
             ViewBag.v2 = "Blog Detayı Ve Yorumlar";
+            ViewBag.blogTitle = blogTitle;
             ViewBag.blogid = id;
             return View();
         }

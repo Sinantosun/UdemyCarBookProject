@@ -3,7 +3,9 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
+using UdemyCarBook.Dto.AboutDtos;
 using UdemyCarBook.Dto.BannerDtos;
+using UdemyCarBook.Dto.RentACarDtos;
 
 namespace UdemyCarBook.WebUI.Controllers
 {
@@ -16,28 +18,23 @@ namespace UdemyCarBook.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            var bookpickdate = TempData["bookpickdate"];
-            var bookoffdate = TempData["bookoffdate"];
-            var timepick = TempData["timepick"];
-            var timeoff = TempData["timeoff"];
+
             var locationId = TempData["locationId"];
 
-            ViewBag.bookpickdate = bookpickdate;
-            ViewBag.bookoffdate = bookoffdate;
-            ViewBag.timepick = timepick;
-            ViewBag.timeoff = timeoff;
+            id = int.Parse(locationId.ToString());
+
+
             ViewBag.locationId = locationId;
 
             var client = _httpClientFactory.CreateClient();
-            var data = JsonConvert.SerializeObject(locationId);
-            StringContent str = new StringContent(data, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7082/api/RentACars", str);
+            var responseMessage = await client.GetAsync($"https://localhost:7082/api/RentACars?locationId={id}&available=true");
             if (responseMessage.IsSuccessStatusCode)
             {
-           
-                return RedirectToAction("Index");
+                var content = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<FilterRentACarDto>>(content);
+                return View(values);
             }
             return View();
         }

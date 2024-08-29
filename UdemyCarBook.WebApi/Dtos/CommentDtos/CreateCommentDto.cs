@@ -8,5 +8,6 @@ namespace UdemyCarBook.WebApi.Dtos.CommentDtos
         public string CommentContent { get; set; }
         public DateTime CreatedDate { get; set; }
         public int BlogId { get; set; }
+        public string Email { get; set; }
     }
 }

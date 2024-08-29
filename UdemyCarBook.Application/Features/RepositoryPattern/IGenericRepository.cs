@@ -13,6 +13,6 @@ namespace UdemyCarBook.Application.Features.RepositoryPattern
         void Update(T entity);
         void Remove(T entity);
         T GetById(int id); 
-        List<T> GetCommentsByBlogId(string BlogTitle);
+        List<T> GetCommentsByBlogId(int id);
     }
 }

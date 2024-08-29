@@ -36,10 +36,7 @@ namespace UdemyCarBook.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string bookpickdate,string bookoffdate,string timepick,string timeoff,string locationId)
         {
-            TempData["bookpickdate"] = bookpickdate;
-            TempData["bookoffdate"] = bookoffdate;
-            TempData["timepick"] = timepick;
-            TempData["timeoff"] = timeoff;
+            
             TempData["locationId"] = locationId;
             return RedirectToAction("Index","RentACarList");
         }

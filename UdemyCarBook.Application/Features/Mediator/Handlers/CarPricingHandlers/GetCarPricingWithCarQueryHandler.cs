@@ -28,6 +28,8 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.CarPricingHandlers
             {
                 Amount = x.Amount,
                 Brand = x.Car.Brand.Name,
+                CarId=x.CarId,
+                
                 CoverImageURL = x.Car.CoverImageUrl,
                 Model = x.Car.Model,
                 CarPricingId = x.CarPricingId,

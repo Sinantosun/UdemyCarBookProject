@@ -35,6 +35,7 @@ namespace UdemyCarBook.WebApi.Controllers
             {
                 BlogId = comment.BlogId,
                 CreatedDate = comment.CreatedDate,
+                Email=comment.Email,
                 Name = comment.Name,
                 CommentContent = comment.CommentContent
             });
@@ -45,6 +46,7 @@ namespace UdemyCarBook.WebApi.Controllers
         {
             var value = _commentRepository.GetById(updateCommentDto.CommentID);
             value.BlogId = updateCommentDto.BlogId;
+            value.Email= updateCommentDto.Email;    
             value.CreatedDate = updateCommentDto.CreatedDate;
             value.Name = updateCommentDto.Name;
             value.CommentContent = updateCommentDto.CommentContent;
@@ -59,16 +61,17 @@ namespace UdemyCarBook.WebApi.Controllers
             return Ok();
         }
 
-        [HttpGet("CommentListByBlog/{BlogTitle}")]
-        public IActionResult CommentListByBlog(string BlogTitle)
+        [HttpGet("CommentListByBlog/{id}")]
+        public IActionResult CommentListByBlog(int id)
         {
-            var values = _commentRepository.GetCommentsByBlogId(BlogTitle);
+            var values = _commentRepository.GetCommentsByBlogId(id);
             var values2 = values.Select(x => new ResultCommentDto
             {
                 BlogId = x.BlogId,
                 CommentContent = x.CommentContent,
                 CommentID = x.CommentID,
                 CreatedDate = x.CreatedDate,
+                Email=x.Email,
                 Name = x.Name
 
             }).ToList();

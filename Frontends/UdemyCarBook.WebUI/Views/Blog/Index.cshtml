@@ -4,14 +4,14 @@
     Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-<section class="ftco-section">
+@* <section class="ftco-section">
     <div class="container">
         <div class="row d-flex justify-content-center">
             @foreach (var item in Model)
             {
                 <div class="col-md-12 text-center d-flex ftco-animate">
                     <div class="blog-entry justify-content-end mb-md-5">
-                        <a href="blog-single.html" class="block-20 img" style="background-image: url('@item.coverImageURL');">
+                        <a href="/Blog/BlogDetail/@item.blogId" class="block-20 img" style="background-image: url('@item.coverImageURL'); height:100px; width:100px">
                         </a>
                         <div class="text px-md-5 pt-4">
                             <div class="meta mb-3">
@@ -19,7 +19,7 @@
                                 <div><a href="#">@item.authorName</a></div>
                                 <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 0</a></div>
                             </div>
-                            <h3 class="heading mt-2"><a href="#">@item.title</a></h3>
+                            <h3 class="heading mt-2"><a href="/Blog/BlogDetail/@item.blogId">@item.title</a></h3>
                             <p>@(item.Description.Length>=150?item.Description.Substring(0,150)+"...":item.Description)</p>
                             <p><a href="/Blog/BlogDetail/@item.blogId" class="btn btn-primary">Devamını Oku <span class="icon-long-arrow-right"></span></a></p>
                         </div>
@@ -30,5 +30,31 @@
         </div>
 
     </div>
+</section> *@
+
+
+<section class="ftco-section bg-light">
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="car-wrap rounded ftco-animate">
+                    <div class="img rounded d-flex align-items-end" style="background-image: url(@item.coverImageURL);">
+                    </div>
+                    <div class="text">
+                            <h4 class="mb-0"><a href="/Blog/BlogDetail/@item.blogId">@(item.title.Length >= 20 ? item.title.Substring(0, 20) + "..." : item.title)</a></h4>
+                        <div class="d-flex mb-3">
+                            <span class="cat">@item.authorName</span>
+                        </div>
+                            <p class="d-flex mb-0 d-block"><a href="/Blog/BlogDetail/@item.blogId" class="btn btn-primary py-2 ml-1"> Devamını oku</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
 </section>
+
 

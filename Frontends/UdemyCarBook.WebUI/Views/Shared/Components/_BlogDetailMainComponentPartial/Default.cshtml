@@ -3,7 +3,7 @@
     <h2 class="mb-3">@Model.Title</h2>
     <p>@Model.Description</p>
     <p>
-        <img src="images/image_7.jpg" alt="" class="img-fluid">
+        <img src="@Model.CoverImageURL" alt="" class="img-fluid">
     </p>
 
     @await Component.InvokeAsync("_BlogDetailClodTagByBlogComponentPartial", new { id = ViewBag.blogid })
@@ -13,8 +13,8 @@
 
 
     <div class="pt-5 mt-5">
-        @await Component.InvokeAsync("_CommentListByBlogComponentPartial")
-        @await Component.InvokeAsync("_AddCommentComponentPartial")
+        @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new { id = ViewBag.blogid})
+        @await Component.InvokeAsync("_AddCommentComponentPartial", new { id = ViewBag.blogid })
 
 
     </div>

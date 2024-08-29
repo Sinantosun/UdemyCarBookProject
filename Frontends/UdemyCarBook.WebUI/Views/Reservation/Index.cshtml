@@ -1,0 +1,77 @@
+﻿@model CreateReservationDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (TempData["status"] != null)
+{
+    <script>
+        Swal.fire({
+            title: "Rezervasyon Alındı",
+            text: "Detaylar İçin Lütfen Mail Adresinizi Kontrol Ediniz",
+            icon: "success"
+        });
+    </script>
+}
+
+<style>
+    #drop1 option{
+        color:grey;
+    }
+
+    #drop2 option {
+        color: grey;
+    }
+</style>
+
+
+<div class="col-md-12 block-9 mb-md-5">
+  
+    <form class="bg-light p-5 contact-form" method="post">
+    <div class="form-group">
+            <h5 class="alert alert-info mb-2"> Araç Rezervasyon Formu</h5>
+    </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" readonly value="@ViewBag.v3" asp-for="CarId" placeholder="almak istediğiniz Araba">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" asp-for="Name" placeholder="Adınız">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" asp-for="Surname" placeholder="Soyadınız">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" asp-for="Email" placeholder="Email Adresiniz">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" asp-for="Phone" placeholder="Telefon Numaranız">
+        </div>
+        <div class="form-group">
+            <select asp-items="@ViewBag.LocationList" asp-for="PickupLocationId" id="drop1" class="form-control">
+                <option>Nereden Alıcaksınız?</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select asp-items="@ViewBag.LocationList" asp-for="DropOffLocationId" id="drop2" class="form-control">
+                <option>İade Edilecek Lokasyonu Seçiniz</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" asp-for="Age" placeholder="Yaşınız">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" asp-for="DriverLicenseYear" placeholder="Ehliyet Yılınız">
+        </div>
+        <div class="form-group">
+            <textarea cols="30" rows="7" class="form-control" asp-for="Description" placeholder="Varsa eklemek istedikleriniz"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Rezervasyonu Tamamla" class="btn btn-primary py-3 px-5">
+        </div>
+    </form>
+
+</div>
+

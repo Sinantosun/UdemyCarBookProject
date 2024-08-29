@@ -13,5 +13,6 @@ namespace UdemyCarBook.Application.Features.Mediator.Results.RentACarResults
         public string Model { get; set; }
         public decimal Amount { get; set; }
         public string CoverImageURL { get; set; }
+
     }
 }

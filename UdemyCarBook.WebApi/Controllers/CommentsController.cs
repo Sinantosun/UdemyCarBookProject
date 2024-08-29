@@ -35,7 +35,7 @@ namespace UdemyCarBook.WebApi.Controllers
             {
                 BlogId = comment.BlogId,
                 CreatedDate = comment.CreatedDate,
-                Email=comment.Email,
+                Email = comment.Email,
                 Name = comment.Name,
                 CommentContent = comment.CommentContent
             });
@@ -46,7 +46,7 @@ namespace UdemyCarBook.WebApi.Controllers
         {
             var value = _commentRepository.GetById(updateCommentDto.CommentID);
             value.BlogId = updateCommentDto.BlogId;
-            value.Email= updateCommentDto.Email;    
+            value.Email = updateCommentDto.Email;
             value.CreatedDate = updateCommentDto.CreatedDate;
             value.Name = updateCommentDto.Name;
             value.CommentContent = updateCommentDto.CommentContent;
@@ -71,8 +71,10 @@ namespace UdemyCarBook.WebApi.Controllers
                 CommentContent = x.CommentContent,
                 CommentID = x.CommentID,
                 CreatedDate = x.CreatedDate,
-                Email=x.Email,
-                Name = x.Name
+                Email = x.Email,
+                Name = x.Name,
+                BlogName = x.Blog.Title,
+
 
             }).ToList();
             return Ok(values2);

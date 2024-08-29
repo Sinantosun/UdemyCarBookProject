@@ -39,7 +39,7 @@
                                     <td>@(((DateTime)item.createdDate).ToString("D"))</td>
                                     <td><button onclick="DeleteBlog(@item.blogId)" class="btn btn-outline-danger">Yayından Kaldır</button></td>
                                     <td><a href="/Blog/BlogDetail/@item.blogId" class="btn btn-outline-dark">Blogu Aç</a></td>
-                                    <td><a href="/Admin/Comment/Index?blogTitle=@item.title" class="btn btn-outline-warning">Yorumlar</a></td>
+                                    <td><a href="/Admin/Comment/Index/@item.blogId" class="btn btn-outline-warning">Yorumlar</a></td>
                                 </tr>
                             }
                         </tbody>

@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Yorum Listesi <br /><br /> @ViewBag.v</h4>
                         <p class="card-subtitle mb-4">
-                          @ViewBag.v  Başlığı altında yapılmış olan yorum listesini bu sayfadan görebilirsiniz. İlgili yorumları kaldırabilir ya da tekrar aktif hale getirebilirsiniz. Bunun için yorumların altında yer alan butonları kullanabilirsiniz.
+                    <b>@Model.Select(t => t.BlogName).FirstOrDefault() </b> Başlığı altında yapılmış olan yorum listesini bu sayfadan görebilirsiniz. İlgili yorumları kaldırabilir ya da tekrar aktif hale getirebilirsiniz. Bunun için yorumların altında yer alan butonları kullanabilirsiniz.
                         </p>
                         @foreach (var item in Model)
                         {

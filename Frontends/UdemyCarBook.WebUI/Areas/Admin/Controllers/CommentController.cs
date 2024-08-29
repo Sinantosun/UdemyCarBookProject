@@ -16,11 +16,11 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index(string blogTitle)
+        public async Task<IActionResult> Index(int id)
         {
-            ViewBag.v = blogTitle;
+          
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7082/api/Comments/CommentListByBlog/{blogTitle}");
+            var responseMessage = await client.GetAsync($"https://localhost:7082/api/Comments/CommentListByBlog/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var content = await responseMessage.Content.ReadAsStringAsync();

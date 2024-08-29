@@ -37,8 +37,8 @@
                                     <td>@item.Km.ToString("N0")</td>
                                     <td><button onclick="DeleteCar(@item.CarId)" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</button></td>
                                     <td><a href="/Admin/Car/UpdateCar/@item.CarId" class="btn btn-outline-success"> <i class="fa fa-edit"></i>  Güncelle</a></td>
-                                    <td><a href="/CarList/Car/CarDetail/@item.CarId" class="btn btn-outline-primary"> <i class="fa fa-search"></i>  Detaylar</a></td>
-                                    <td><a href="/CarList/Car/CarDetail/@item.CarId" class="btn btn-outline-secondary"> <i class="fa fa-tags"></i>  Fiyat Bilgileri</a></td>
+                                    <td><a href="/Admin/CarFeatureDetail/Index/@item.CarId" class="btn btn-outline-primary"> <i class="fa fa-search"></i>  Detaylar</a></td>
+                                    <td><a href="/Admin/Car/CarPricing/@item.CarId" class="btn btn-outline-secondary"> <i class="fa fa-tags"></i>  Fiyat Bilgileri</a></td>
                                 </tr>
                             }
                       

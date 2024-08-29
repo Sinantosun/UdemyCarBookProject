@@ -1,5 +1,7 @@
 ﻿
 
+using System.Linq.Expressions;
+
 namespace UdemyCarBook.Application.Interfaces
 {
     public interface IRepository<T> where T : class
@@ -10,5 +12,7 @@ namespace UdemyCarBook.Application.Interfaces
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
+
+        Task<List<T>> GetFilteredList(Expression<Func<T, bool>> where);
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Persistence.Context;
 
@@ -28,6 +29,11 @@ namespace UdemyCarBook.Persistence.Repositories
         public async Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);
+        }
+
+        public async Task<List<T>> GetFilteredList(Expression<Func<T, bool>> where)
+        {
+            return await _context.Set<T>().Where(where).ToListAsync();
         }
 
         public async Task RemoveAsync(T entity)

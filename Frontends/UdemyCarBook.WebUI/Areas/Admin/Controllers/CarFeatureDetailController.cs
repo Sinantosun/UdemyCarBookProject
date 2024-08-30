@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
-
+using System.Text;
 using UdemyCarBook.Dto.CarFeatureDtos;
+using UdemyCarBook.Dto.CategoryDtos;
 
 namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
 {
@@ -29,6 +30,27 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
                 return View(values);
             }
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(List<ResultCarFeatureByCarIdDto> resultCarFeatureByCarIdDto)
+        {
+            foreach (var item in resultCarFeatureByCarIdDto)
+            {
+
+                if (item.Available)
+                {
+                    var client = _httpClientFactory.CreateClient();
+                    await client.GetAsync($"https://localhost:7082/api/CarFeatures/CarFeatureChangeAvailableToTrue/{item.CarFeatureId}");
+
+                }
+                else
+                {
+                    var client = _httpClientFactory.CreateClient();
+                    await client.GetAsync($"https://localhost:7082/api/CarFeatures/CarFeatureChangeAvailableToFalse/{item.CarFeatureId}");
+                }
+            }
+
+            return RedirectToAction("Index", "Car");
         }
     }
 }

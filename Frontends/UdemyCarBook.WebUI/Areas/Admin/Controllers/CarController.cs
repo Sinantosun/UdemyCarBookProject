@@ -130,7 +130,55 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index", "Car");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> AddCarFeatureDetail(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7082/api/Features/test?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var content = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultCarFeatureByCarIdDto>>(content);
+                return View(values);
+            }
+            return View();
+        
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddCarFeatureDetail(List<ResultCarFeatureByCarIdDto> resultCarFeatureByCarIdDto)
+        {
+            //https://localhost:7082/api/CarFeatures/CreateCarFeature
 
+            foreach (var item in resultCarFeatureByCarIdDto)
+            {
+                ResultCarFeatureByCarIdDto NewCarFeature = new ResultCarFeatureByCarIdDto()
+                {
+                    Available=item.Available,
+                    CarId=item.CarId,
+                    FeatureId=item.FeatureId,   
+                };
+                if (item.Available)
+                {
+                    var client = _httpClientFactory.CreateClient();
+                    var data = JsonConvert.SerializeObject(NewCarFeature);
+                    StringContent str = new StringContent(data, Encoding.UTF8, "application/json");
+                    var responseMessage = await client.PostAsync("https://localhost:7082/api/CarFeatures/CreateCarFeature", str);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        TempData["NotificationResult"] = "Kayıt Eklendi";
+                        TempData["NotificationIcon"] = "success";
+                  
+                    }
+          
+                }
+                else
+                {
+                    //bu değer varsa silincek.
+                }
+            }
+           
+            return RedirectToAction("Index", "Car");
+        }
 
 
 

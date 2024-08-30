@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UdemyCarBook.Application.Features.Mediator.Commands.FeatureCommands;
 using UdemyCarBook.Application.Features.Mediator.Queries.FeatureQueries;
+using UdemyCarBook.Application.Interfaces.FeatureInterfaces;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace UdemyCarBook.WebApi.Controllers
@@ -12,7 +13,6 @@ namespace UdemyCarBook.WebApi.Controllers
     public class FeaturesController : ControllerBase
     {
         private readonly IMediator _mediator;
-
         public FeaturesController(IMediator mediator)
         {
             _mediator = mediator;
@@ -50,6 +50,13 @@ namespace UdemyCarBook.WebApi.Controllers
         {
             await _mediator.Send(new RemoveFeatureCommand(id));
             return Ok();
+        }
+
+        [HttpGet("test")]
+        public async Task<IActionResult> test(int id)
+        {
+            var value = await _mediator.Send(new GetFeatureByCarIdQuery(id));
+            return Ok(value);
         }
     }
 }

@@ -10,5 +10,14 @@ namespace UdemyCarBook.Application.Interfaces.CarFeatureInterfaces
     public interface ICarFeatureRepository
     {
         Task<List<CarFeature>> GetCarFeatureListByCarId(int id);
+
+        Task ChangeCarFeatureAvailableToFalse(int id);
+        Task ChangeCarFeatureAvailableToTrue(int id);
+
+        Task CreateCarAsync(CarFeature carFeature);
+
+       
+
+
     }
 }

@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using System.Text;
 using UdemyCarBook.Dto.BrandDtos;
 using UdemyCarBook.Dto.CarDtos;
+using UdemyCarBook.Dto.CarFeatureDtos;
+using UdemyCarBook.Dto.FeatureDtos;
 
 namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
 {
@@ -47,28 +49,43 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
                 var values = JsonConvert.DeserializeObject<List<ResultCarWithBrandsDtos>>(content);
                 return View(values);
             }
+
             return View();
+
+
+
         }
         [HttpGet]
         public async Task<IActionResult> CreateCar()
         {
+            var client = _httpClientFactory.CreateClient();
             await LoadDropDown();
+
+            var responseMessage2 = await client.GetAsync("https://localhost:7082/api/Features");
+            if (responseMessage2.IsSuccessStatusCode)
+            {
+                var content2 = await responseMessage2.Content.ReadAsStringAsync();
+                var values2 = JsonConvert.DeserializeObject<List<ResultFeatureDto>>(content2);
+                ViewBag.FeatureValues = values2;
+            }
+
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateCar(CreateCarDto createCarDto)
         {
+
             var client = _httpClientFactory.CreateClient();
             var data = JsonConvert.SerializeObject(createCarDto);
             StringContent str = new StringContent(data, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7082/api/Cars", str);
+            var responseMessage = await client.PostAsync("https://localhost:7082/api/Cars/CreateCar2", str);
             if (responseMessage.IsSuccessStatusCode)
             {
                 TempData["NotificationResult"] = "Kayıt Eklendi";
                 TempData["NotificationIcon"] = "success";
                 return RedirectToAction("Index");
             }
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public async Task<IActionResult> UpdateCar(int id)
@@ -110,10 +127,12 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
                 TempData["NotificationIcon"] = "success";
                 return RedirectToAction("Index");
             }
-            return RedirectToAction("Index","Car");
+            return RedirectToAction("Index", "Car");
         }
 
-       
+
+
+
 
     }
 }

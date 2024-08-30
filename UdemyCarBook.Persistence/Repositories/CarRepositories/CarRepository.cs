@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UdemyCarBook.Application.Features.CQRS.Commands.CarCommands;
+using UdemyCarBook.Application.Features.Mediator.Results.FeatureResults;
 using UdemyCarBook.Application.Interfaces.CarInterfaces;
 using UdemyCarBook.Domain.Entities;
 using UdemyCarBook.Persistence.Context;
@@ -12,6 +14,39 @@ namespace UdemyCarBook.Persistence.Repositories.CarRepositories
         public CarRepository(CarBookContext context)
         {
             _context = context;
+        }
+
+        public async Task CreateCarAsync(CreateCarCommand command)
+        {
+
+            var value = await _context.Cars.AddAsync(new Car
+            {
+                BrandId = command.BrandId,
+                BigImageUrl = command.BigImageUrl,
+                Fuel = command.Fuel,
+                Km = command.Km,
+                Luggage = command.Luggage,
+                Seat = command.Seat,
+
+                Transmission = command.Transmission,
+                Model = command.Model,
+                CoverImageUrl = command.CoverImageUrl,
+            });
+            await _context.SaveChangesAsync();
+            for (int i = 0; i < command.CarFeatureIds.Count(); i++)
+            {
+                _context.CarFeatures.Add(new CarFeature
+                {
+                    CarId = value.Entity.CarId,
+                    Available = true,
+                    FeatureId = command.CarFeatureIds[i],
+                    
+                });
+            }
+            await _context.SaveChangesAsync();
+
+
+
         }
 
         public async Task<int> GetCarCountAsync()

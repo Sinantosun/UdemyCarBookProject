@@ -12,7 +12,7 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers.Write
     public class CreateCarCommandHandler
     {
         private readonly IRepository<Car> _repository;
-
+        
         public CreateCarCommandHandler(IRepository<Car> repository)
         {
             _repository = repository;
@@ -20,6 +20,7 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers.Write
 
         public async Task Handle(CreateCarCommand command)
         {
+          
             await _repository.CreateAsync(new Car
             {
                 BrandId = command.BrandId,
@@ -28,6 +29,7 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers.Write
                 Km = command.Km,
                 Luggage = command.Luggage,
                 Seat = command.Seat,
+                
                 Transmission = command.Transmission,
                 Model = command.Model,
                 CoverImageUrl = command.CoverImageUrl,

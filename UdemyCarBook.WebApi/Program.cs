@@ -77,6 +77,7 @@ builder.Services.AddScoped<GetCarQueryHandler>();
 builder.Services.AddScoped<CreateCarCommandHandler>();
 
 
+builder.Services.AddScoped<CreateCarHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<GetCarWithBrandQueryHandler>();

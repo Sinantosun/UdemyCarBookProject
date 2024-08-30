@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UdemyCarBook.Dto.CarFeatureDtos;
+using UdemyCarBook.Dto.FeatureDtos;
 
 namespace UdemyCarBook.Dto.CarDtos
 {
@@ -18,5 +20,11 @@ namespace UdemyCarBook.Dto.CarDtos
         public byte Luggage { get; set; }
         public string Fuel { get; set; }
         public string BigImageUrl { get; set; }
+
+        public int[] CarFeatureIds { get; set; }
+
+
+
+
     }
 }

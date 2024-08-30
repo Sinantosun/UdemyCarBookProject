@@ -20,9 +20,10 @@ namespace UdemyCarBook.WebApi.Controllers
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLast5CarsWithBrandQueryHandler _getLast5CarsWithBrandQueryHandler;
-       
+        private readonly CreateCarHandler _createCarCommandHandler;
 
-        public CarsController(CreateCarCommandHandler createCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsWithBrandQueryHandler getLast5CarsWithBrandQueryHandler)
+
+        public CarsController(CreateCarCommandHandler createCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsWithBrandQueryHandler getLast5CarsWithBrandQueryHandler, CreateCarHandler createCarCommandHandler)
         {
             _createCommandHandler = createCommandHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -31,7 +32,7 @@ namespace UdemyCarBook.WebApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarsWithBrandQueryHandler = getLast5CarsWithBrandQueryHandler;
-        
+            _createCarCommandHandler = createCarCommandHandler;
         }
         [HttpGet("GetCarWithBrand")]
         public async Task<IActionResult> GetCarWithBrand()
@@ -74,12 +75,20 @@ namespace UdemyCarBook.WebApi.Controllers
             return Ok();
         }
 
+
         [HttpPut]
         public async Task<IActionResult> UpdateCar(UpdateCarCommand command)
         {
             await _updateCarCommandHandler.Handle(command);
             return Ok();
         }
-     
+
+        [HttpPost("CreateCar2")]
+        public async Task<IActionResult> CreateCar2(CreateCarCommand command)
+        {
+            await _createCarCommandHandler.Handle(command);
+            return Ok();
+        }
+
     }
 }

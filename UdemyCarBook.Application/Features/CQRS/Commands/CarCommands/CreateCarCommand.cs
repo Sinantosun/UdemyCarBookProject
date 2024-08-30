@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UdemyCarBook.Application.Features.Mediator.Commands.FeatureCommands;
+using UdemyCarBook.Application.Features.Mediator.Results.FeatureResults;
 
 namespace UdemyCarBook.Application.Features.CQRS.Commands.CarCommands
 {
@@ -17,5 +19,7 @@ namespace UdemyCarBook.Application.Features.CQRS.Commands.CarCommands
         public byte Luggage { get; set; }
         public string Fuel { get; set; }
         public string BigImageUrl { get; set; }
+        public int[] CarFeatureIds { get; set; }
+
     }
 }

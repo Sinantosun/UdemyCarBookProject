@@ -1,0 +1,40 @@
+﻿@model List<ResultCarPricingListWithBrandAndModelDto>
+<div class="col-xl-6">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">Araç Kiralama Ücretleri</h4>
+            <p class="card-subtitle mb-4 font-size-13">
+                Bazı araçların günlük - haftalık - aylık kiralama fiyatları.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-centered table-hover table-xl mb-0" id="recent-orders">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">Marka & Model</th>
+                            <th class="border-top-0">Günlük Fiyat</th>
+                            <th class="border-top-0">Haftalık Fiyat</th>
+                            <th class="border-top-0">Aylık Fiyat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-truncate">@item.model</td>
+  
+                                <td>  @item.dailyAmount.ToString("0.00")  </td>
+                                <td>  @item.weeklyAmount.ToString("0.00")  </td>
+                                <td>  @item.monthlyAmount.ToString("0.00")  </td>
+                            </tr>
+                        }
+                
+                       
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- end card-body-->
+    </div> <!-- end card-->
+</div> 

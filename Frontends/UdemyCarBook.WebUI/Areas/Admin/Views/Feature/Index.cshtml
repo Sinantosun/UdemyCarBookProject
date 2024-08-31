@@ -5,49 +5,62 @@
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
-
-<div class="row">
-    <div class="col-xl-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Araba Özellikleri</h4>
-                <p class="card-subtitle mb-4">
-                    Araba özellikleri ile ilgili ekleme, silme, güncelleme ve listeleme gibi işlemleri bu sayfa üzerinden gerçeleştirebilirsiniz. Tema da veri tutarlılığını sağlayabilmek için lütfen 3'ün katı şeklin de veri girişi yapınız.
-                </p>
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Özellik</th>
-                                <th colspan="2" class="text-center">İşlemler</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                count++;
+@if (Model.Count > 0 && Model.Any())
+{
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Araba Özellikleri</h4>
+                    <p class="card-subtitle mb-4">
+                        Araba özellikleri ile ilgili ekleme, silme, güncelleme ve listeleme gibi işlemleri bu sayfa üzerinden gerçeleştirebilirsiniz. Tema da veri tutarlılığını sağlayabilmek için lütfen 3'ün katı şeklin de veri girişi yapınız.
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
                                 <tr>
-                                    <th scope="row">@count</th>
-                                    <td>@item.Name</td>
-                                    <td style="width:100px"><button onclick="DeleteFeature(@item.FeatureId)" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</button></td>
-                                    <td style="width:150px"><a href="/Admin/Feature/UpdateFeature/@item.FeatureId" class="btn btn-outline-success"> <i class="fa fa-edit"></i>  Güncelle</a></td>
+                                    <th>#</th>
+                                    <th>Özellik</th>
+                                    <th colspan="2" class="text-center">İşlemler</th>
                                 </tr>
-                            }
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.Name</td>
+                                        <td style="width:100px"><button onclick="DeleteFeature(@item.FeatureId)" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</button></td>
+                                        <td style="width:150px"><a href="/Admin/Feature/UpdateFeature/@item.FeatureId" class="btn btn-outline-success"> <i class="fa fa-edit"></i>  Güncelle</a></td>
+                                    </tr>
+                                }
 
 
-                        </tbody>
-                    </table>
-                    <a href="/Admin/Feature/CreateFeature" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Ekle</a>
+                            </tbody>
+                        </table>
+        
+                    </div>
                 </div>
+                <!-- end Featured-body-->
             </div>
-            <!-- end Featured-body-->
+            <!-- end Featured -->
+
         </div>
-        <!-- end Featured -->
 
     </div>
+}
+else
+{
+    <div class="container">
+        <div class="container-fluid">
+            <div class="alert alert-info"><span>Araç Özelliği Bulunamadı</span></div>
+            <br />
+            <a href="/Admin/Feature/CreateFeature" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Ekle</a>
+        </div>
+    </div>
+}
 
-</div>
 
 <script>
     function DeleteFeature(id) {

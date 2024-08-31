@@ -1,0 +1,22 @@
+﻿@model List<ResultReviewDetailByCarIdDto>
+<div class="col-md-5">
+    <div class="rating-wrap">
+        <h3 class="head">Değerlendirme Sonuçları</h3>
+        <div class="wrap">
+            @foreach (var item in Model)
+            {
+                <p class="star">
+                    <span>
+                        @for (int i = 1; i <= item.starValue; i++)
+                        {
+                            <i class="ion-ios-star"></i>
+                        }
+
+                    </span>
+                    <span style="font-size:10pt">@item.count Değerlendirme</span>
+                </p>
+            }
+
+        </div>
+    </div>
+</div>

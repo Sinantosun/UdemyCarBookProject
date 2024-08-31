@@ -23,6 +23,10 @@ namespace UdemyCarBook.Dto.CarDtos
 
         public int[] CarFeatureIds { get; set; }
 
+        public decimal DailyAmount { get; set; }
+        public decimal WeeklyAmount { get; set; }
+        public decimal MonthlyAmount { get; set; }
+
 
 
 

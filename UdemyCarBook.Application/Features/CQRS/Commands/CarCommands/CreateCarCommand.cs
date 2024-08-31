@@ -21,5 +21,9 @@ namespace UdemyCarBook.Application.Features.CQRS.Commands.CarCommands
         public string BigImageUrl { get; set; }
         public int[] CarFeatureIds { get; set; }
 
+        public decimal DailyAmount { get; set; }
+        public decimal WeeklyAmount { get; set; }
+        public decimal MonthlyAmount { get; set; }
+
     }
 }

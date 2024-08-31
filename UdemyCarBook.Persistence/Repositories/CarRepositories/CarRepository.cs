@@ -35,17 +35,44 @@ namespace UdemyCarBook.Persistence.Repositories.CarRepositories
             await _context.SaveChangesAsync();
             for (int i = 0; i < command.CarFeatureIds.Count(); i++)
             {
-                _context.CarFeatures.Add(new CarFeature
+                await _context.CarFeatures.AddAsync(new CarFeature
                 {
                     CarId = value.Entity.CarId,
                     Available = true,
                     FeatureId = command.CarFeatureIds[i],
-                    
+
                 });
             }
             await _context.SaveChangesAsync();
 
+            var DailyAmountId = await _context.Pricings.Where(t => t.Name == "Günlük").Select(t => t.PricingId).FirstOrDefaultAsync();
+            var WeeklyAmountId = await _context.Pricings.Where(t => t.Name == "Haftalık").Select(t => t.PricingId).FirstOrDefaultAsync();
+            var MontlyAmountId = await _context.Pricings.Where(t => t.Name == "Aylık").Select(t => t.PricingId).FirstOrDefaultAsync();
 
+            await _context.CarPricings.AddAsync(new CarPricing
+            {
+                CarId = value.Entity.CarId,
+                PricingId = DailyAmountId,
+                Amount = command.DailyAmount,
+
+            });
+
+            await _context.CarPricings.AddAsync(new CarPricing
+            {
+                CarId = value.Entity.CarId,
+                PricingId = WeeklyAmountId,
+                Amount = command.WeeklyAmount,
+
+            });
+
+            await _context.CarPricings.AddAsync(new CarPricing
+            {
+                CarId = value.Entity.CarId,
+                PricingId = MontlyAmountId,
+                Amount = command.MonthlyAmount,
+
+            });
+            await _context.SaveChangesAsync();
 
         }
 
@@ -60,6 +87,10 @@ namespace UdemyCarBook.Persistence.Repositories.CarRepositories
             return values;
         }
 
+        public async Task<Car> GetCarWithModelAndBrandByCarIdAsync(int id)
+        {
+            return await _context.Cars.Where(t => t.CarId == id).Include(y => y.Brand).FirstOrDefaultAsync();
+        }
 
         public async Task<List<Car>> GetLast5CarsWithBrans()
         {

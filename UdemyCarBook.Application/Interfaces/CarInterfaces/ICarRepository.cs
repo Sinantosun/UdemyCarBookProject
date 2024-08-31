@@ -17,6 +17,8 @@ namespace UdemyCarBook.Application.Interfaces.CarInterfaces
 
         Task CreateCarAsync(CreateCarCommand command);
 
+        Task<Car> GetCarWithModelAndBrandByCarIdAsync(int id);
+
 
     }
 }

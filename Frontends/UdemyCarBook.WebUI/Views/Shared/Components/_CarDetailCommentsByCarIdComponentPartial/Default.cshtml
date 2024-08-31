@@ -1,0 +1,38 @@
+﻿@model List<ResultReviewByCarIdDto>
+<div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+    <div class="row">
+        <div class="col-md-7">
+            <h3 class="head">@Model.Count() Değerlendirme</h3>
+            @foreach (var item in Model)
+            {
+                <div class="review d-flex">
+                    <div class="user-img" style="background-image: url(@item.image)"></div>
+                    <div class="desc">
+                        <h4>
+                            <span class="text-left">@item.customerName</span>
+                            <span class="text-right">@item.reviewDate.ToShortDateString()</span>
+                        </h4>
+                        <p class="star">
+                            <span>
+                                @for (int i = 1; i <= item.starValue; i++)
+                                {
+                                    <i class="ion-ios-star"></i>
+                                }
+                                @for (int i = 1; i <= 5 - item.starValue; i++)
+                                {
+                                    <i class="  ion-ios-star-outline"></i>
+                                }
+                            </span>
+
+                            <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                        </p>
+                        <p>@item.comment</p>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        @await Component.InvokeAsync("_CarDetailReviewDetailsComponentPartial", new { id = ViewBag.CarId })
+    </div>
+</div>

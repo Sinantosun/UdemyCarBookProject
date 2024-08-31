@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using UdemyCarBook.Dto.CarDtos;
+using UdemyCarBook.Dto.CarFeatureDtos;
 using UdemyCarBook.Dto.CarPricingDtos;
 namespace UdemyCarBook.WebUI.Controllers
 {
@@ -27,6 +29,17 @@ namespace UdemyCarBook.WebUI.Controllers
                 return View(values);
             }
             return View();
+        }
+		
+
+        public async Task<IActionResult> CarDetail(int id)
+        {
+            ViewBag.CarId = id;
+            ViewBag.v1 = "Araç Detayları";
+            ViewBag.v2 = "Aracın Özellikleri";
+			
+			return View();
+
         }
     }
 }

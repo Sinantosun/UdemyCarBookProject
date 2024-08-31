@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UdemyCarBook.Persistence.Context;
 
@@ -11,9 +12,11 @@ using UdemyCarBook.Persistence.Context;
 namespace UdemyCarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    partial class CarBookContextModelSnapshot : ModelSnapshot
+    [Migration("20240831091630_mig_add_addrolle_appuser")]
+    partial class mig_add_addrolle_appuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,16 +75,12 @@ namespace UdemyCarBook.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AppRoleId")
+                    b.Property<string>("AppRoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AppRoleId1")
                         .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -93,7 +92,7 @@ namespace UdemyCarBook.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppRoleId");
+                    b.HasIndex("AppRoleId1");
 
                     b.ToTable("AppUsers");
                 });
@@ -791,7 +790,7 @@ namespace UdemyCarBook.Persistence.Migrations
                 {
                     b.HasOne("UdemyCarBook.Domain.Entities.AppRole", "AppRole")
                         .WithMany("AppUsers")
-                        .HasForeignKey("AppRoleId")
+                        .HasForeignKey("AppRoleId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

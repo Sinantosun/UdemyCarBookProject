@@ -8,7 +8,7 @@ using UdemyCarBook.Application.Features.Mediator.Queries.ReviewQueries;
 using UdemyCarBook.Application.Features.Mediator.Results.ReviewResults;
 using UdemyCarBook.Application.Interfaces.ReviewInterfaces;
 
-namespace UdemyCarBook.Application.Features.Mediator.Handlers.ReviewHandlers
+namespace UdemyCarBook.Application.Features.Mediator.Handlers.ReviewHandlers.Read
 {
     public class GetReviewDetailByCarIdQueryHandler : IRequestHandler<GetReviewDetailByCarIdQuery, List<GetReviewDetailByCarIdQueryResult>>
     {

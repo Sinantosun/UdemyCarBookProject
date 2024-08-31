@@ -14,5 +14,6 @@ namespace UdemyCarBook.Application.Interfaces
         Task RemoveAsync(T entity);
 
         Task<List<T>> GetFilteredList(Expression<Func<T, bool>> where);
+        Task<T?> GetByFilter(Expression<Func<T, bool>> where);
     }
 }

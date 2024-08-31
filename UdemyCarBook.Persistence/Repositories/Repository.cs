@@ -26,6 +26,11 @@ namespace UdemyCarBook.Persistence.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
+        public async Task<T?> GetByFilter(Expression<Func<T, bool>> where)
+        {
+            return await _context.Set<T>().SingleOrDefaultAsync(where);
+        }
+
         public async Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);

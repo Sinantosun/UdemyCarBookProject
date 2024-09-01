@@ -1,4 +1,4 @@
-![blogslist](https://github.com/user-attachments/assets/f7608d9b-a927-4ce8-b900-f225f6001f1e)<h1>CarBook - Araç Kiralama Sitesi</h1>
+<h1>CarBook - Araç Kiralama Sitesi</h1>
 
 <hr>
 Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme yapıp, araç kiralayıp admin tarafında bu sürecin yönetilebildiği CarBook olarak adlandırdığımız bir proje geliştirdik.

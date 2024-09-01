@@ -71,10 +71,10 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 
 ![blogs](https://github.com/user-attachments/assets/71505355-a25f-4b02-9483-0780a2ff278a)
 
-🚀 Yazarların yazdığı blog listeleri burada listelenmektedir.
-🚀 Admin seçtiği bloğu yayından kaldırabilir.
-🚀 Bloğu tek sayfa üzerinden detaylarına ulaşabilir.
-🚀 Yayınlanmış olan bloğun yorumlarına ulaşabilir.
+🚀 Yazarların yazdığı blog listeleri burada listelenmektedir. <br>
+🚀 Admin seçtiği bloğu yayından kaldırabilir. <br>
+🚀 Bloğu tek sayfa üzerinden detaylarına ulaşabilir. <br>
+🚀 Yayınlanmış olan bloğun yorumlarına ulaşabilir. <br>
 
 <h3>Blog Yorum Listesi</h3>
 

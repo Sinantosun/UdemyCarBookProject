@@ -30,11 +30,11 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
   <li>Rezervasyon Sonucunda mail gönderme</li>
 </ul>
 <hr>
-🚀 AspNet Core 8.0 sürümüyle Api üzerinden Swagger ve Postman kullanarak testlerimi gerçekleştirdik. <br>
-☆ Mimari olarak Onion Architecture kullandık. Projede tek Solution altında 6 tane katman yer aldı.<br>
-⚗️Design Pattern olarak CQRS - Mediator ve Repository tasarım desenlerine yer verdik.<br>
-💊Veri tabanı olarak MSSQL kullandık.<br>
-🔑Proje güvenliği için Json Web Token kullandık. Böylece yetkisiz rol erişimlerinin önüne geçmiş olduk.<br>
+🚀 AspNet Core 8.0 sürümüyle Api üzerinden Swagger ve Postman kullanarak testlerimi gerçekleştirdik. <br> <br>
+☆ Mimari olarak Onion Architecture kullandık. Projede tek Solution altında 6 tane katman yer aldı.<br> <br>
+⚗️Design Pattern olarak CQRS - Mediator ve Repository tasarım desenlerine yer verdik.<br> <br>
+💊Veri tabanı olarak MSSQL kullandık.<br> <br>
+🔑Proje güvenliği için Json Web Token kullandık. Böylece yetkisiz rol erişimlerinin önüne geçmiş olduk.<br> <br>
 🎈 Bonus olarak projede SignalR, Fluent Validation, JWT Bearer yönetimi, Dashboard gibi konulara yer verdik.<br> 
 
 <hr>

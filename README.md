@@ -1,4 +1,4 @@
-<h1>CarBook - Araç Kiralama Sitesi</h1>
+![blogslist](https://github.com/user-attachments/assets/f7608d9b-a927-4ce8-b900-f225f6001f1e)<h1>CarBook - Araç Kiralama Sitesi</h1>
 
 <hr>
 Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme yapıp, araç kiralayıp admin tarafında bu sürecin yönetilebildiği CarBook olarak adlandırdığımız bir proje geliştirdik.
@@ -56,8 +56,6 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
   
 🚀 araba ile ilgili veri tabanı operasyonları buradan yönetildi.
   
-
-
 <hr>
 
 <h3>Araba Ekleme Sayfası/h3>
@@ -70,10 +68,45 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 
 🚀 Bütün veriler girildikten sonra kaydet butonu yardımıyla veriler tek sayfa üzerinden kayıt işlemi gerçekleştiriliyor.
 
- 
 <hr>
 
 
+<h3>Blog Listesi/h3>
+
+![blogs](https://github.com/user-attachments/assets/71505355-a25f-4b02-9483-0780a2ff278a)
+
+🚀 Yazarların yazdığı blog listeleri burada listelenmektedir.
+🚀 Admin seçtiği bloğu yayından kaldırabilir.
+🚀 Bloğu tek sayfa üzerinden detaylarına ulaşabilir.
+🚀 Yayınlanmış olan bloğun yorumlarına ulaşabilir.
+
+<h3>Blog Yorum Listesi/h3>
+
+![blogcomments](https://github.com/user-attachments/assets/8d73db33-00e9-4380-974a-476307b0df91)
+
+<hr>
+
+<h3>Ana Sayfa/h3>
+
+![uicarlist](https://github.com/user-attachments/assets/cb6197d4-470c-4992-903d-ac85aadc22f6)
+
+![cardetail01](https://github.com/user-attachments/assets/00e7208f-2aa4-4da5-a1b6-e9b344d021b6)
+
+![cardetail02](https://github.com/user-attachments/assets/4c46d38c-6658-4f47-a5fd-bd333f07dcb9)
+
+![cardetail03](https://github.com/user-attachments/assets/1ed11df3-88a2-4162-8e47-b5f864ef3baa)
+
+![cardetail04](https://github.com/user-attachments/assets/1fa84c26-ec4e-4eb9-99ee-a904c1a1e4b3)
+
+![cardetail05](https://github.com/user-attachments/assets/5c6581b7-acbb-407d-9e67-47337bdabe23)
+
+<h3>Blog Listesi/h3>
+  
+![blogslist](https://github.com/user-attachments/assets/a6fb70a1-ec94-4aad-b655-924c66766a53)
+
+![blogdetail02](https://github.com/user-attachments/assets/b90dd055-5de2-4e12-9228-2bfdee10997f)
+![blogdetail01](https://github.com/user-attachments/assets/b625d8a3-df77-4f8d-9593-5cf457b852f8)
+![blogdetail03](https://github.com/user-attachments/assets/3080d06e-53ee-43a2-8c7d-c0050b44e781)
 
 
 

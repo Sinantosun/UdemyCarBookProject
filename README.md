@@ -54,7 +54,7 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
   
 <hr>
 
-<h3>Araba Ekleme Sayfası/h3>
+<h3>Araba Ekleme Sayfası</h3>
   
 ![caradd](https://github.com/user-attachments/assets/b0149271-e277-45c0-a112-633fcff6428f)
 
@@ -67,7 +67,7 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 <hr>
 
 
-<h3>Blog Listesi/h3>
+<h3>Blog Listesi</h3>
 
 ![blogs](https://github.com/user-attachments/assets/71505355-a25f-4b02-9483-0780a2ff278a)
 
@@ -76,13 +76,13 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 🚀 Bloğu tek sayfa üzerinden detaylarına ulaşabilir.
 🚀 Yayınlanmış olan bloğun yorumlarına ulaşabilir.
 
-<h3>Blog Yorum Listesi/h3>
+<h3>Blog Yorum Listesi</h3>
 
 ![blogcomments](https://github.com/user-attachments/assets/8d73db33-00e9-4380-974a-476307b0df91)
 
 <hr>
 
-<h3>Ana Sayfa/h3>
+<h3>Ana Sayfa</h3>
 
 ![uicarlist](https://github.com/user-attachments/assets/cb6197d4-470c-4992-903d-ac85aadc22f6)
 
@@ -96,7 +96,7 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 
 ![cardetail05](https://github.com/user-attachments/assets/5c6581b7-acbb-407d-9e67-47337bdabe23)
 
-<h3>Blog Listesi/h3>
+<h3>Blog Listesi</h3>
   
 ![blogslist](https://github.com/user-attachments/assets/a6fb70a1-ec94-4aad-b655-924c66766a53)
 

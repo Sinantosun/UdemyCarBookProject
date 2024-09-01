@@ -12,7 +12,7 @@ namespace UdemyCarBook.Persistence.Repositories.MailRepositories
         {
             MimeMessage mimeMessage = new MimeMessage();
 
-            MailboxAddress mailBoxAdressFrom = new MailboxAddress("CarBook Admin", "aspnetcoreprojeler@gmail.com");
+            MailboxAddress mailBoxAdressFrom = new MailboxAddress("CarBook Admin", "e posta");
 
             mimeMessage.From.Add(mailBoxAdressFrom);
 
@@ -30,7 +30,7 @@ namespace UdemyCarBook.Persistence.Repositories.MailRepositories
 
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Connect("smtp.gmail.com", 587, false);
-            smtpClient.Authenticate("aspnetcoreprojeler@gmail.com", "ltrx uitx zazw ubgh");
+            smtpClient.Authenticate("e posta", "şifre");
             await smtpClient.SendAsync(mimeMessage);
             await smtpClient.DisconnectAsync(true);
 

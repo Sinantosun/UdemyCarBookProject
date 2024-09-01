@@ -32,7 +32,7 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 <hr>
 🚀 AspNet Core 8.0 sürümüyle Api üzerinden Swagger ve Postman kullanarak testlerimi gerçekleştirdik. <br>
 
-🛞 Mimari olarak Onion Architecture kullandık. Projede tek Solution altında 6 tane katman yer aldı.<br>
+☆ Mimari olarak Onion Architecture kullandık. Projede tek Solution altında 6 tane katman yer aldı.<br>
 
 ⚗️Design Pattern olarak CQRS - Mediator ve Repository tasarım desenlerine yer verdik.<br>
 

@@ -104,5 +104,7 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 ![blogdetail01](https://github.com/user-attachments/assets/b625d8a3-df77-4f8d-9593-5cf457b852f8)
 ![blogdetail03](https://github.com/user-attachments/assets/3080d06e-53ee-43a2-8c7d-c0050b44e781)
 
+![mailphoto](https://github.com/user-attachments/assets/762c9aa9-d651-4f91-a316-bc75ce73bd78)
+
 
 

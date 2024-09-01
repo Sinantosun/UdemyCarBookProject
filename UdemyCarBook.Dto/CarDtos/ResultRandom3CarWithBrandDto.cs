@@ -1,6 +1,12 @@
-﻿namespace UdemyCarBook.Dto.CarDtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UdemyCarBook.Dto.CarDtos
 {
-    public class ResultLast5CarWithBrandDto
+    public class ResultRandom3CarWithBrandDto
     {
         public int CarId { get; set; }
         public int BrandId { get; set; }

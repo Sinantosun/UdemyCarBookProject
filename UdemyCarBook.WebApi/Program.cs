@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using MailKit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
@@ -23,7 +24,9 @@ using UdemyCarBook.Application.Interfaces.CarDescriptionInterfaces;
 using UdemyCarBook.Application.Interfaces.CarFeatureInterfaces;
 using UdemyCarBook.Application.Interfaces.CarInterfaces;
 using UdemyCarBook.Application.Interfaces.CarPricingInterfaces;
+using UdemyCarBook.Application.Interfaces.CategoryRepositories;
 using UdemyCarBook.Application.Interfaces.FeatureInterfaces;
+using UdemyCarBook.Application.Interfaces.MailInterfaces;
 using UdemyCarBook.Application.Interfaces.RentACarInterfaces;
 using UdemyCarBook.Application.Interfaces.ReviewInterfaces;
 using UdemyCarBook.Application.Interfaces.StatisticInteraces;
@@ -37,20 +40,31 @@ using UdemyCarBook.Persistence.Repositories.CarDescriptionRepositories;
 using UdemyCarBook.Persistence.Repositories.CarFeatureRepositories;
 using UdemyCarBook.Persistence.Repositories.CarPricingRepsitories;
 using UdemyCarBook.Persistence.Repositories.CarRepositories;
+using UdemyCarBook.Persistence.Repositories.CategoryRepositories;
 using UdemyCarBook.Persistence.Repositories.CommentRepositories;
 using UdemyCarBook.Persistence.Repositories.FeatureRepositories;
+using UdemyCarBook.Persistence.Repositories.MailRepositories;
 using UdemyCarBook.Persistence.Repositories.RentACarRepositories;
 using UdemyCarBook.Persistence.Repositories.ReviewRepositories;
 using UdemyCarBook.Persistence.Repositories.StatisticRepositories;
 using UdemyCarBook.Persistence.Repositories.TagCloudRepositories;
 using UdemyCarBook.WebApi.Controllers;
+using UdemyCarBook.WebApi.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 
-
+builder.Services.AddCors(opts =>
+{
+    opts.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed((host) => true).AllowCredentials();
+    });
+});
+builder.Services.AddSignalR();
+builder.Services.AddHttpClient();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opts =>
 {
     opts.RequireHttpsMetadata = false;
@@ -73,6 +87,8 @@ builder.Services.AddScoped<IStatisticRepository, StatisticRepository>();
 builder.Services.AddScoped<ICarPricingRepository, CarPricingRepository>();
 builder.Services.AddScoped<ITagCloudRepository, TagCloudRepository>();
 builder.Services.AddScoped<IRentACarRepository, RentACarRepository>();
+builder.Services.AddScoped<ICategorRepository, CategoryRepository>();
+builder.Services.AddScoped<IMailRepository, MailRepository>();
 builder.Services.AddScoped<IFeatureRepository, FeatureRepository>();
 builder.Services.AddScoped<ICarFeatureRepository, CarFeatureRepository>();
 builder.Services.AddScoped<ICarDescriptionRepository, CarDescriptionRepository>();
@@ -89,6 +105,7 @@ builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<CreateAboutCommandHandler>();
 builder.Services.AddScoped<UpdateAboutCommandHandler>();
 builder.Services.AddScoped<RemoveAboutCommandHandler>();
+builder.Services.AddScoped<GetRandom3CarListQueryHandler>();
 
 builder.Services.AddScoped<GetBannerByIdQueryHandler>();
 builder.Services.AddScoped<GetBannerQueryHandler>();
@@ -142,11 +159,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHub<CarHub>("/carhub");
 app.Run();

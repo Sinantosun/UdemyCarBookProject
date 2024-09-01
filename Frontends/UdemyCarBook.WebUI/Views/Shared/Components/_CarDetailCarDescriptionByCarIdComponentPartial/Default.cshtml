@@ -1,4 +1,17 @@
 ﻿@model ResultCarDescriptionByCarIdDto
-<div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-    <p>@Model.deatils</p>
-</div>
+@if (Model != null)
+{
+    <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+        <p>@Model.deatils</p>
+    </div>
+
+}
+else
+{
+    <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+        <div class="alert alert-info">
+            <strong>Bu araç için açıklama bilgisi eklenmemiş.</strong>
+        </div>
+    </div>
+
+}

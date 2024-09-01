@@ -1,8 +1,8 @@
 ﻿@model ResultBlogByIdDto
 <div class="col-md-8 ftco-animate">
-    <h2 class="mb-3">@Model.Title</h2>
-    <p>@Model.Description</p>
-    <p>
+    <h3 class="mb-3">@Model.Title</h3>
+    <p>@Html.Raw(@Model.Description)</p>
+    <p style="text-align:center">
         <img src="@Model.CoverImageURL" alt="" class="img-fluid">
     </p>
 

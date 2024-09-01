@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UdemyCarBook.Application.Features.CQRS.Commands.CarCommands;
+using UdemyCarBook.Application.Features.CQRS.Results.CarResults;
 using UdemyCarBook.Application.Features.Mediator.Results.FeatureResults;
 using UdemyCarBook.Application.Interfaces.CarInterfaces;
 using UdemyCarBook.Domain.Entities;
@@ -92,10 +93,68 @@ namespace UdemyCarBook.Persistence.Repositories.CarRepositories
             return await _context.Cars.Where(t => t.CarId == id).Include(y => y.Brand).FirstOrDefaultAsync();
         }
 
+        public async Task<List<GetCarWithBrandQueryResult>> GetLast5CarsWithBrands()
+        {
+            var values = await _context.Cars.Include(x => x.Brand).Include(t => t.CarPricings).OrderByDescending(x => x.CarId).Take(5).ToListAsync();
+            var dailyId = await _context.Pricings.Where(t => t.Name == "Günlük").Select(y => y.PricingId).FirstOrDefaultAsync();
+            List<GetCarWithBrandQueryResult> value = new List<GetCarWithBrandQueryResult>();
+            foreach (var item in values)
+            {
+                var DailyAmount = item.CarPricings.Where(t => t.CarId == item.CarId && t.PricingId == dailyId).Select(t => t.Amount).FirstOrDefault();
+                value.Add(new GetCarWithBrandQueryResult
+                {
+                    CarId = item.CarId,
+                    BrandId = item.BrandId,
+                    BigImageUrl = item.BigImageUrl,
+                    DailyAmount = DailyAmount,
+                    BrandName = item.Brand.Name,
+                    CoverImageUrl = item.CoverImageUrl,
+                    Fuel = item.Fuel,
+                    Km = item.Km,
+                    Luggage = item.Luggage,
+                    Model = item.Model,
+                    Seat = item.Seat,
+                    Transmission = item.Transmission,
+                });
+            };
+            return value;
+
+        }
+
+
+
+
         public async Task<List<Car>> GetLast5CarsWithBrans()
         {
-            var values = await _context.Cars.Include(x => x.Brand).OrderByDescending(x => x.CarId).Take(5).ToListAsync();
+            var values = await _context.Cars.Include(x => x.Brand).Include(t => t.CarPricings).OrderByDescending(x => x.CarId).Take(5).ToListAsync();
             return values;
+        }
+
+        public async Task<List<GetCarWithBrandQueryResult>> GetRandom3CarAsync()
+        {
+            var values = await _context.Cars.Include(x => x.Brand).Include(t => t.CarPricings).OrderByDescending(x => Guid.NewGuid()).Take(3).ToListAsync();
+            var dailyId = await _context.Pricings.Where(t => t.Name == "Günlük").Select(y => y.PricingId).FirstOrDefaultAsync();
+            List<GetCarWithBrandQueryResult> value = new List<GetCarWithBrandQueryResult>();
+            foreach (var item in values)
+            {
+                var DailyAmount = item.CarPricings.Where(t => t.CarId == item.CarId && t.PricingId == dailyId).Select(t => t.Amount).FirstOrDefault();
+                value.Add(new GetCarWithBrandQueryResult
+                {
+                    CarId = item.CarId,
+                    BrandId = item.BrandId,
+                    BigImageUrl = item.BigImageUrl,
+                    DailyAmount = DailyAmount,
+                    BrandName = item.Brand.Name,
+                    CoverImageUrl = item.CoverImageUrl,
+                    Fuel = item.Fuel,
+                    Km = item.Km,
+                    Luggage = item.Luggage,
+                    Model = item.Model,
+                    Seat = item.Seat,
+                    Transmission = item.Transmission,
+                });
+            };
+            return value;
         }
     }
 }

@@ -25,6 +25,8 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Read
             {
                 CategoryId = x.CategoryId,
                 CategoryName = x.CategoryName,
+
+                
             }).ToList();
         }
     }

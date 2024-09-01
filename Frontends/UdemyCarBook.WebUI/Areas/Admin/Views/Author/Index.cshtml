@@ -21,7 +21,7 @@
                                 <th>#</th>
                                 <th>Ad Soyad</th>
                              
-                                <th colspan="3" class="text-center"> işlemler</th>
+                                <th colspan="2" class="text-center"> işlemler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,7 +33,6 @@
                                     <td><img src="@item.ImageURL" width="50" height="50" style="margin-right:10px" /> @item.Name</td>
                                     <td style="width:80px"><button onclick="(DeleteAuthor(@item.AuthorID))" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</button></td>
                                     <td style="width:125px"><a href="/Admin/Author/UpdateAuthor/@item.AuthorID" class="btn btn-outline-success"> <i class="fa fa-edit"></i> Güncelle</a></td>
-                                    <td style="width:160px"><a href="/Admin/Author/#/@item.AuthorID" class="btn btn-outline-dark"> <i class="fa fa-blog"></i> Yazarın Blogları</a></td>
                                 </tr>
                             }
                         </tbody>

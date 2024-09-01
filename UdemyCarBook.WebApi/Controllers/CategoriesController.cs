@@ -4,6 +4,7 @@ using UdemyCarBook.Application.Features.CQRS.Commands.CategoryCommands;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Write;
 using UdemyCarBook.Application.Features.CQRS.Queries.CategoryQueries;
+using UdemyCarBook.Application.Interfaces.CategoryRepositories;
 
 namespace UdemyCarBook.WebApi.Controllers
 {
@@ -16,20 +17,21 @@ namespace UdemyCarBook.WebApi.Controllers
         private readonly GetCategoryQueryHandler _getCategoryQueryHandler;
         private readonly UpdateCategoryCommandHandler _updateCategoryCommandHandler;
         private readonly RemoveCategoryCommandHandler _removeCategoryCommandHandler;
-
-        public CategoriesController(CreateCategoryCommandHandler createCommandHandler, GetCategoryByIdQueryHandler getCategoryByIdQueryHandler, GetCategoryQueryHandler getCategoryQueryHandler, UpdateCategoryCommandHandler updateCategoryCommandHandler, RemoveCategoryCommandHandler removeCategoryCommandHandler)
+        private readonly ICategorRepository _categoryRepository;
+        public CategoriesController(CreateCategoryCommandHandler createCommandHandler, GetCategoryByIdQueryHandler getCategoryByIdQueryHandler, GetCategoryQueryHandler getCategoryQueryHandler, UpdateCategoryCommandHandler updateCategoryCommandHandler, RemoveCategoryCommandHandler removeCategoryCommandHandler, ICategorRepository categoryRepository)
         {
             _createCommandHandler = createCommandHandler;
             _getCategoryByIdQueryHandler = getCategoryByIdQueryHandler;
             _getCategoryQueryHandler = getCategoryQueryHandler;
             _updateCategoryCommandHandler = updateCategoryCommandHandler;
             _removeCategoryCommandHandler = removeCategoryCommandHandler;
+            _categoryRepository = categoryRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> CategoryList()
         {
-            var values = await _getCategoryQueryHandler.Handle();
+            var values = await _categoryRepository.GetCategoryCountByBlog();
             return Ok(values);
         }
         [HttpGet("{id}")]

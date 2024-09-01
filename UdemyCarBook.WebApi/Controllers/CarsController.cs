@@ -21,9 +21,9 @@ namespace UdemyCarBook.WebApi.Controllers
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLast5CarsWithBrandQueryHandler _getLast5CarsWithBrandQueryHandler;
         private readonly CreateCarHandler _createCarCommandHandler;
+        private readonly GetRandom3CarListQueryHandler _getRandom3CarListQueryHandler;
 
-
-        public CarsController(CreateCarCommandHandler createCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsWithBrandQueryHandler getLast5CarsWithBrandQueryHandler, CreateCarHandler createCarCommandHandler)
+        public CarsController(CreateCarCommandHandler createCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsWithBrandQueryHandler getLast5CarsWithBrandQueryHandler, CreateCarHandler createCarCommandHandler, GetRandom3CarListQueryHandler getRandom3CarListQueryHandler)
         {
             _createCommandHandler = createCommandHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -33,6 +33,7 @@ namespace UdemyCarBook.WebApi.Controllers
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarsWithBrandQueryHandler = getLast5CarsWithBrandQueryHandler;
             _createCarCommandHandler = createCarCommandHandler;
+            _getRandom3CarListQueryHandler = getRandom3CarListQueryHandler;
         }
         [HttpGet("GetCarWithBrand")]
         public async Task<IActionResult> GetCarWithBrand()
@@ -89,6 +90,15 @@ namespace UdemyCarBook.WebApi.Controllers
             await _createCarCommandHandler.Handle(command);
             return Ok();
         }
+
+        [HttpGet("GetRandom3CarList")]
+        public async Task<IActionResult> GetRandom3CarList()
+        {
+            var values = await _getRandom3CarListQueryHandler.Handle();
+            return Ok(values);  
+        }
+
+
 
     }
 }

@@ -1,5 +1,5 @@
 <h1>CarBook - Araç Kiralama Sitesi</h1>
-<br>
+
 <hr>
 Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme yapıp, araç kiralayıp admin tarafında bu sürecin yönetilebildiği CarBook olarak adlandırdığımız bir proje geliştirdik.
 

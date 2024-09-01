@@ -46,7 +46,7 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 🚀 Widgetlerin tamamı api üzerinden entity özgü methodlar yazılarak api tarafı tüketildi.
 <hr>
 
-<h3>Araba Listesi/h3>
+<h3>Araba Listesi</h3>
   
 ![carlist](https://github.com/user-attachments/assets/d779afb3-36c9-44d7-9de2-10d06ebfaf52)
   

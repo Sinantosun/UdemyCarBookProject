@@ -29,7 +29,7 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
   <li>Rezervasyon oluşturma</li>
   <li>Rezervasyon Sonucunda mail gönderme</li>
 </ul>
-
+<hr>
 🚀 AspNet Core 8.0 sürümüyle Api üzerinden Swagger ve Postman kullanarak testlerimi gerçekleştirdik. <br>
 
 🛞 Mimari olarak Onion Architecture kullandık. Projede tek Solution altında 6 tane katman yer aldı.<br>
@@ -41,7 +41,7 @@ Bu Projede, bir kullanıcının lokasyon ve diğer detaylara göre filtreleme ya
 🔑Proje güvenliği için Json Web Token kullandık. Böylece yetkisiz rol erişimlerinin önüne geçmiş olduk.<br>
 
 🎈 Bonus olarak projede SignalR, Fluent Validation, JWT Bearer yönetimi, Dashboard gibi konulara yer verdik.<br> 
-
+<hr>
 <h3>Admin Dashboard Alanı</h3>
 
 ![dashboard](https://github.com/user-attachments/assets/673080b8-a85b-43e3-aa83-534bc014077e)
